@@ -48,6 +48,7 @@ public class UnaryExpression implements Expression {
     
     @Override
     public String toString() {
-        return String.format("%s(%s)", operator.toString(), subExpression.toString());
+        final String sub = subExpression.toString();
+        return String.format(sub.startsWith("(") ? "%s%s" : "%s(%s)", operator.toString(), sub);
     }
 }

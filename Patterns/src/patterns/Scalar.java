@@ -18,12 +18,12 @@ public class Scalar<T> implements Expression {
 
     @Override
     public Operator getOperator() {
-        return null;
+        return null; // Scalars do not have operators.
     }
 
     @Override
     public List<Expression> getSubExpressions() {
-        return new ArrayList<>();
+        return new ArrayList<>(); // Scalars have no sub-expressions.
     }
     
     public T getValue() {
