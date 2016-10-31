@@ -48,6 +48,10 @@ public class BinaryExpression implements Expression {
         hash = 79 * hash + Objects.hashCode(this.rightHand);
         return hash;
     }
+
+    public String toPrefixNotation() {
+        return String.format("(%s %s %s)", operator.toString(), leftHand.toString(), rightHand.toString());
+    }
     
     @Override
     public String toString() {

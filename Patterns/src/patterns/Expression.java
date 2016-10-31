@@ -1,9 +1,6 @@
 package patterns;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -11,15 +8,42 @@ import java.util.stream.Collectors;
  * @author robertmitchell
  */
 public interface Expression {
-    public Operator getOperator();
-    public List<Expression> getSubExpressions();
-    
-    public static Expression from(final String s) {
-        // TODO: Implement parsing expression trees from a String.
-        return null;
+    Operator getOperator();
+    List<Expression> getSubExpressions();
+
+    static Expression fromPrefixNotation(final String expr) {
+        final String operatorPattern = "[+*-/]+"; // TODO: Support more operators.
+        final Stack<String> strings = new Stack<>();
+        /* Convert the string into a stack of strings which are each either an operator, or an operand. */
+        Arrays.stream(expr.split("\\s+")).forEach(strings::push);
+
+        final Stack<Expression> expressions = new Stack<>();
+        while (!strings.isEmpty()) {
+            final String str = strings.pop();
+            if (str.matches(operatorPattern)) {
+                final Operator<String> op = Operator.<String>from(str);
+                /* Apply this operator to it's needed number of operands. */
+                List<Expression> operands = new ArrayList<>();
+                for (int i = 0; i < op.getNumberOfOperands(); i++) {
+                    operands.add(expressions.pop());
+                }
+                /* Add that resulting expression to the list. */
+                expressions.push(Expression.from(op, operands.toArray(new Expression[operands.size()])));
+            } else {
+                expressions.push(new Scalar<>(str));
+            }
+        }
+
+        return expressions.pop();
+    }
+
+    static Expression fromInfixNotation(final String expr) {
+        // TODO: Convert to prefix notation.
+        final String exprInPrefix = expr;
+        return fromPrefixNotation(exprInPrefix);
     }
     
-    public static Expression from(final Operator op, final Expression ... exprs) {
+    static Expression from(final Operator op, final Expression ... exprs) {
         // TODO: Consider caching expression instances.
         switch (exprs.length) {
             case 1:
@@ -31,15 +55,15 @@ public interface Expression {
         }
     }
     
-    public static boolean isVariable(final Expression expr) {
+    static boolean isVariable(final Expression expr) {
         return expr != null && expr instanceof Variable;
     }
     
-    public static boolean isScalar(final Expression expr) {
+    static boolean isScalar(final Expression expr) {
         return expr != null && expr instanceof Scalar;
     }
     
-    public static List<Expression> variablesOf(final Expression expr) {
+    static List<Expression> variablesOf(final Expression expr) {
         if (expr == null) {
             return new ArrayList<>();
         } else if (isVariable(expr)) {
@@ -66,7 +90,7 @@ public interface Expression {
         return variables;
     }
     
-    public static Expression evaluate(final Expression expr) {
+    static Expression evaluate(final Expression expr) {
         if (isVariable(expr)) {
             return expr;
         } else if (isScalar(expr)) {
@@ -83,11 +107,11 @@ public interface Expression {
                         .toArray(Expression[]::new));
     }
     
-    public static void main(final String[] args) {
+    static void main(final String[] args) {
         final Operator<Double> doubleAddition = new Operator<>("+",
-                        a -> a.get(0) + a.get(1));
+                        a -> a.get(0) + a.get(1), 2);
         final Operator<Double> square = new Operator<>("square",
-                        a -> Math.pow(a.get(0), 2));
+                        a -> Math.pow(a.get(0), 2), 1);
         final Expression test1 = 
                 Expression.from(square,
                     Expression.from(doubleAddition,
@@ -98,5 +122,16 @@ public interface Expression {
         
         System.out.println(test1);
         System.out.println(Expression.evaluate(test1));
+
+
+        Arrays.asList(
+                "+ 2 + 3 4",
+                "+ + 2 3 4",
+                "+ + -- 2 3 4"
+        ).forEach(str -> {
+            System.out.println(str);
+            System.out.println(Expression.fromPrefixNotation(str));
+            System.out.println(Expression.evaluate(Expression.fromPrefixNotation(str)));
+        });
     }
 }
