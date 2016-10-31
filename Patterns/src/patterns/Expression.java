@@ -1,6 +1,8 @@
 package patterns;
 
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -11,19 +13,21 @@ public interface Expression {
     Operator getOperator();
     List<Expression> getSubExpressions();
 
+    String OPERATOR_PATTERN = "[+*-/]+"; // TODO: Support more operators.
+
     static Expression fromPrefixNotation(final String expr) {
-        final String operatorPattern = "[+*-/]+"; // TODO: Support more operators.
-        final Stack<String> strings = new Stack<>();
+        // TODO: Determine which algorithm is better between this and fromInfixNotation, then implement the lesser in terms of the greater.
+        final Deque<String> strings = new ArrayDeque<>();
         /* Convert the string into a stack of strings which are each either an operator, or an operand. */
         Arrays.stream(expr.split("\\s+")).forEach(strings::push);
 
-        final Stack<Expression> expressions = new Stack<>();
+        final Deque<Expression> expressions = new ArrayDeque<>();
         while (!strings.isEmpty()) {
             final String str = strings.pop();
-            if (str.matches(operatorPattern)) {
+            if (str.matches(OPERATOR_PATTERN)) {
                 final Operator<String> op = Operator.<String>from(str);
                 /* Apply this operator to it's needed number of operands. */
-                List<Expression> operands = new ArrayList<>();
+                final List<Expression> operands = new ArrayList<>();
                 for (int i = 0; i < op.getNumberOfOperands(); i++) {
                     operands.add(expressions.pop());
                 }
@@ -38,9 +42,28 @@ public interface Expression {
     }
 
     static Expression fromInfixNotation(final String expr) {
-        // TODO: Convert to prefix notation.
-        final String exprInPrefix = expr;
-        return fromPrefixNotation(exprInPrefix);
+        // Pad parentheses so they can be parsed in tokens.
+        final Scanner s = new Scanner(expr.replaceAll("\\(", " ( ").replaceAll("\\)", " ) "));
+
+        final Deque<Expression> expressions = new ArrayDeque<>();
+        final Deque<Operator> operators = new ArrayDeque<>();
+        while (s.hasNext()) {
+            final String str = s.next();
+            if (str.matches(OPERATOR_PATTERN)) {
+                operators.push(Operator.from(str));
+            } else if (str.equals(")")) {
+                final Operator op = operators.pop();
+                final Deque<Expression> operands = new ArrayDeque<>();
+                for (int i = 0; i < op.getNumberOfOperands(); ++i) {
+                    operands.push(expressions.pop());
+                }
+                expressions.push(Expression.from(op, operands.toArray(new Expression[operands.size()])));
+            } else {
+                expressions.push(new Scalar<>(str));
+            }
+        }
+
+        return expressions.pop();
     }
     
     static Expression from(final Operator op, final Expression ... exprs) {
@@ -132,6 +155,18 @@ public interface Expression {
             System.out.println(str);
             System.out.println(Expression.fromPrefixNotation(str));
             System.out.println(Expression.evaluate(Expression.fromPrefixNotation(str)));
+        });
+
+        System.out.println();
+
+        Arrays.asList(
+                "(2 + (3 + 4))",
+                "((2 + 3) + 4)",
+                "((--(2) + 3) + 4)"
+        ).forEach(str -> {
+            System.out.println(str);
+            System.out.println(Expression.fromInfixNotation(str));
+            System.out.println(Expression.evaluate(Expression.fromInfixNotation(str)));
         });
     }
 }
