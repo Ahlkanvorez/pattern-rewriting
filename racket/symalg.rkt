@@ -11,7 +11,7 @@
 ;;;; Comment format:
 ;;    ;;;; Input signature -> output signature
 ;;    ;; Description of function
-;;    ;; Example-usage (optional name of testing function)
+;;    ;;; Example-usage (optional name of testing function)
 ;;    ;;  ;; > (example-invocation)
 ;;    ;;  ;; actual-output from that invocation.
 ;;    (optional testing function definition prior to actual function definition)
