@@ -28,11 +28,27 @@
 ;; or function patterns (if they take one operand), which map to lambdas that perform the
 ;; represented operation. Additionally, this function takes an assoc list of variable names
 ;; to their values, and an expression to evaluate using the above information.
-;;; TODO: Write example usage, and test.
+;;; Example-usage (exp-eval-test)
+;;  ;; > (exp-eval (append basic-operators
+;;  ;;                     basic-functions
+;;  ;;                     trig-functions)
+;;  ;;             '((a 25) (b 50) (c 3))
+;;  ;;             '(/ (+ (* (- c) (sin a)) (sqrt b)) 5))
+  (define (exp-eval-test)
+    (let ((result (exp-eval (append basic-operators
+                                    basic-functions
+                                    trig-functions)
+                            '((a 25) (b 50) (c 3))
+                            '(/ (+ (* (- c) (sin a)) (sqrt b)) 5)))
+          (correctAnswer 1.493624612431759))
+      (if (equal? result correctAnswer)
+          #t
+          (list 'got result 'expected correctAnswer))))
 (define (exp-eval functions variables exp)
-  (cond ((number? exp) exp)
+  (cond ((null? exp) exp)
+        ((number? exp) exp)
         ((symbol? exp) (cadr (assoc exp variables)))
-        (else
+        ((list? exp)
          (let ((left (if (not (null? (lhs exp)))
                          (exp-eval functions variables (lhs exp))
                          `()))
@@ -41,7 +57,8 @@
                           `())))
            (cond ((null? left)  ((cadr (assoc (list (car exp) 'u) functions)) right))
                  ((null? right) ((cadr (assoc (list (car exp) 'u) functions)) left))
-                 (else ((cadr (assoc (car exp) functions)) left right)))))))
+                 (else          ((cadr (assoc (car exp) functions)) left right)))))
+        (else `())))
 
 ;;;; '((k1 v1) (k2 v2) ...) '(an expression) -> a scalar value.
 ;; This function takes an association list of variable symbols with values, and an
@@ -51,14 +68,15 @@
 ;; see the documentation for exp-eval.
 ;;; Example-usage (exp-easy-eval-test)
 ;;  ;; > (exp-easy-eval '((a 25) (b 50) (c 3))
-;;  ;;                  '(+ (* (- c) (sin a)) (sqrt b)))
-;;  ;; 7.468123062158795
-;;;
-
-(define (exp-easy-eval-test)
-  (equal? (exp-easy-eval '((a 25) (b 50) (c 3))
-                         '(+ (* (- c) (sin a)) (sqrt b)))
-          7.468123062158795))
+;;  ;;                  '(/ (+ (* (- c) (sin a)) (sqrt b)) 5)
+;;  ;; 1.493624612431759
+  (define (exp-easy-eval-test)
+    (let ((result (exp-easy-eval '((a 25) (b 50) (c 3))
+                                 '(/ (+ (* (- c) (sin a)) (sqrt b)) 5)))
+          (correctAnswer 1.493624612431759))
+      (if (equal? result correctAnswer)
+          #t
+          (list 'got result 'expected correctAnswer))))
 (define (exp-easy-eval variables exp)
   (exp-eval (append basic-operators
                     basic-functions

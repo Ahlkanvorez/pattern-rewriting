@@ -44,11 +44,14 @@
 ;;  ;;  (= (sin x?) (exp (/ (sqrt (log 42)) 5)))
 ;;  ;;  (= x? (arcsin (exp (/ (sqrt (log 42)) 5)))))
   (define (solve-test)
-    (solve (append rewrite-rules-functions
-                   rewrite-rules-basic-algebra
-                   rewrite-rules-solve-equation)
-           '(= (exp (square (* 5 (log (sin x?))))) 42)
-           'x?))
+    (let ((result (solve (append rewrite-rules-functions
+                                 rewrite-rules-basic-algebra
+                                 rewrite-rules-solve-equation)
+                         '(= (exp (square (* 5 (log (sin x?))))) 42)
+                         'x?)))
+      (if (eq? 'x? (lhs (last result)))
+          #t
+          result)))
 (define (solve rules exp var)
   (define (either-solution? exp)
     (or (solution? (car exp))
@@ -83,27 +86,58 @@
     (lambda (x) (unknown-iter known x)))
   (bfs (list exp) either-solution? extract-solution unknown? alter-expression remember))
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; ((f1 f2 ... fN) (rule1 rule2 ... ruleM) exp) -> exp
+;; Given an expression, this function performs simplification operations on both the symbolic
+;; subexpressions, by way of algebraic operations, and the functional expressions, by way of
+;; algebraic operations, and lastly numerical computations where no symbols remain ambiguous
+;; in a subexpression, returning the result of the simplification as a new expression, all
+;; according to the default patterns.
+;;; Example-usage (easy-simplify-test)
+;; ;; > (easy-simplify '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5))))
+;; ;; '(* 3 (sqrt (/ y? 5)))
 (define (simplify functions rules exp)
   (define (eval-simplify expr)
+                                        ; If the expression is a list, then treat it as a full expression tree; simplifying
+                                        ; each sub-tree and recombining the results.
     (if (list? expr)
-        (if (empty? (expr-vars expr))
+        (if (empty? (expr-vars expr))   ; If there are no variables (i.e. ambiguous terms) in the expression, evaluate it.
             (if (empty? functions)
                 (exp-easy-eval '() expr)
                 (exp-eval functions '() expr))
-            (list (car expr)
-                  (eval-simplify (lhs expr))
-                  (eval-simplify (rhs expr))))
+                                        ; Otherwise, recursively simplify each sub-tree, and recombine the results.
+            (let ((left (eval-simplify (lhs expr)))
+                  (right (eval-simplify (rhs expr))))
+                                        ; Trees with one child are treated as always having a left child.
+              (if (null? right)
+                  (list (car expr) left)
+                  (list (car expr) left right))))
+        ; Otherwise, return the expression as is: scalars cannot be simplified.
         expr))
-  (eval-simplify (if (empty? (expr-vars exp))
-                     exp
-                     (transform rules exp))))
+  (define (simplify-iter expr last seen)
+    (if (or (equal? last expr) (member expr seen))
+        expr
+        (simplify-iter (simplify-aux expr) expr (cons last seen))))
+  (define (simplify-aux expr)
+    (eval-simplify (if (empty? (expr-vars expr))
+                       expr
+                       (transform rules expr))))
+  (simplify-iter (simplify-aux exp) exp '())) ; Transform the expression according to the given rules before reduction.
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (exp) -> exp
+;; Given an expression, this function performs simplification operations on both the symbolic
+;; subexpressions, by way of algebraic operations, and the functional expressions, by way of
+;; algebraic operations, and lastly numerical computations where no symbols remain ambiguous
+;; in a subexpression, returning the result of the simplification as a new expression, all
+;; according to the default patterns.
+;;; Example-usage (easy-simplify-test)
+;; ;; > (easy-simplify '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5))))
+;; ;; '(* 3 (sqrt (/ y? 5)))
+(define (easy-simplify-test)
+  (let ((result (easy-simplify '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5)))))
+        (target '(* 3 (sqrt (/ y? 5)))))
+    (if (equal? result target)
+        #t
+        (list 'got result 'expected target))))
 (define (easy-simplify exp)
   (simplify '()
             (append rewrite-rules-functions
@@ -115,17 +149,37 @@
 ;; Given a quoted expression, and a quoted variable to solve for, this function will return '()
 ;; if it cannot find a solution, or the solution in the form '(= var exp3) where exp3 is the
 ;; quoted expression that var is equal to. This will use the default solving rules.
-;;; TODO: Comment example usage.
+;;; Example Usage (easy-solve-test)
+;;  ;; > (easy-solve '(= (exp (square (* (log (sin x?))))) 42) 'x?)
+;;  ;; '((= (exp (square (* 5 (log (sin x?))))) 42)
+;;  ;;  (= (square (* 5 (log (sin x?)))) (log 42))
+;;  ;;  (= (* 5 (log (sin x?))) (sqrt (log 42)))
+;;  ;;  (= (log (sin x?)) (/ (sqrt (log 42)) 5))
+;;  ;;  (= (sin x?) (exp (/ (sqrt (log 42)) 5)))
+;;  ;;  (= x? (arcsin (exp (/ (sqrt (log 42)) 5)))))
+  (define (easy-solve-test)
+    (let ((result (easy-solve '(= (exp (square (* 5 (log (sin x?))))) 42) 'x?)))
+      (if (eq? 'x? (lhs (last result)))
+          #t
+          result)))
 (define (easy-solve exp var)
-  (let ((solution (solve (append rewrite-rules-solve-equation
-                                 rewrite-rules-basic-algebra)
-                         exp var)))
-    (append solution
-            (list (easy-simplify (last solution))))))
+  (solve (append rewrite-rules-functions
+                 rewrite-rules-basic-algebra
+                 rewrite-rules-solve-equation)
+         exp var))
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (exp) -> (a? b? c? ... z?)
+;; Given a quoted expression, this function will return a list containing all of the symbols which
+;; represent values in the  expression tree, or '() if there are none; meaning that symbols which
+;; represent functions or operators will not be listed in the result.
+;;; Example Usage (eq-values-test)
+;;  ;; > (eq-values '(= (exp (square (* 5 (log (sin x?))))) (+ a? 42)))
+;;  ;; '(x? a?)
+  (define (eq-values-test)
+    (let ((vals (eq-values '(= (exp (square (* 5 (log (sin x?))))) (+ a? 42)))))
+      (if (equal? '(x? a?) vals)
+          #t
+          vals)))
 (define (eq-values exp)
   (cond ((null? exp) '())
         ((symbol? exp) (list exp))
@@ -133,9 +187,13 @@
                              (eq-values (rhs exp))))
         (else '())))
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (exp1 exp2 ... expN) -> '()
+;; NOTE: This function is not truly functional: it has the side-effect of output to the console, and
+;; has no natural return value.
+;; This function outputs each expression on a new-line, as a convenience method for printing each step
+;; in the process of solving an equation.
+;;; Example Usage [no test provided].
+;;  ;; > (print-work (easy-solve '(= (exp (square (* 5 (log (sin x?))))) (+ a? 42)) 'x?))
 (define (print-work steps)
   (newline)
   (if (not (null? steps))
@@ -146,7 +204,7 @@
       (print-work (cdr steps))))
 
 
-;; TODO: Comment
+;; Some basic and rather arbitrary rules for solving equations at the root level across an '= sign.
 (define rewrite-rules-solve-equation
   '(
     ; Forms for reducing a variable in count
@@ -239,7 +297,8 @@
 
     ))
 
-;; TODO: Comment
+;; Some basic rules for rewriting algebraic expressions according to the rules of an
+;; abelian group.
 (define rewrite-rules-basic-algebra
   '(
     ((+ x? ?y) (+ y? x?))                           ; Commutative law for addition
@@ -262,7 +321,7 @@
 
     ))
 
-;; TODO: Comment
+;; Some basic rules for solving derivatives
 (define rewrite-rules-differential-calculus
   '(
     ((deriv (+ f? g?) x?) (+ (deriv f? x?) (deriv g? x?)))
@@ -292,7 +351,7 @@
 
     ))
 
-;; TODO: Comment
+;; Some basic rules for solving functional expressions.
 (define rewrite-rules-functions
   '(
 
