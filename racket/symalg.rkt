@@ -87,14 +87,22 @@
   (bfs (list exp) either-solution? extract-solution unknown? alter-expression remember))
 
 ;;;; ((f1 f2 ... fN) (rule1 rule2 ... ruleM) exp) -> exp
+;; Note: the functions which can optionally be provided here are patterned after those in the
+;; exp-eval.rkt file, used for evaluating expressions. See that file for examples.
 ;; Given an expression, this function performs simplification operations on both the symbolic
 ;; subexpressions, by way of algebraic operations, and the functional expressions, by way of
 ;; algebraic operations, and lastly numerical computations where no symbols remain ambiguous
 ;; in a subexpression, returning the result of the simplification as a new expression, all
 ;; according to the default patterns.
-;;; Example-usage (easy-simplify-test)
-;; ;; > (easy-simplify '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5))))
+;;; Example-usage (simplify-test)
+;; ;; > (simplify '() rewrite-rules-basic-algebra  '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5))))
 ;; ;; '(* 3 (sqrt (/ y? 5)))
+(define (simplify-test)
+  (let ((result (simplify '() rewrite-rules-basic-algebra  '(* (+ (* (- 5 5) x?) 3) (sqrt (/ y? 5)))))
+        (target '(* 3 (sqrt (/ y? 5)))))
+    (if (equal? target result)
+        #t
+        (list 'got result 'expected target))))
 (define (simplify functions rules exp)
   (define (eval-simplify expr)
                                         ; If the expression is a list, then treat it as a full expression tree; simplifying
