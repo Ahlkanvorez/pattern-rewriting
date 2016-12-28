@@ -15,32 +15,47 @@
 
 #lang racket
 
+(require "lisp.rkt")
+
 (provide bfs dfs)
 
 ;;;;
 ;; TODO: Comment
 ;;;
 (define (bfs node target? alter-target good? children remember)
-	(define (bfs-iter node queue visited)
-		(if (target? node)
-			(alter-target node visited)
-			(let* ((kids (filter (good? visited) (children node)))
-				   (new-queue (append queue kids)))
-				(if (null? new-queue)
-					'()
-					(bfs-iter (car new-queue) (cdr new-queue) (remember node visited))))))
-	(bfs-iter node (filter (good? '()) (children node)) '()))
+  (define (bfs-iter node queue visited)
+    (if (target? node)
+        (alter-target node visited)
+        (let* ((kids (filter (good? visited) (children node)))
+               (new-queue (append queue kids)))
+          (if (null? new-queue)
+              '()
+              (bfs-iter (car new-queue) (cdr new-queue) (remember node visited))))))
+  (bfs-iter node (filter (good? '()) (children node)) '()))
 
 ;;;;
 ;; TODO: Comment
 ;;;
 (define (dfs node target? alter-target good? children)
-	(define (dfs-iter node stack visited)
-		(if (target? node)
-			(alter-target node visited)
-			(let* ((kids (filter (good? visited) (children node)))
-				   (new-stack (append kids stack)))
-				(if (null? new-stack)
-					'()
-					(dfs-iter (car new-stack) (cdr new-stack) (cons node visited))))))
-	(dfs-iter node '() '()))
+  (define (dfs-iter node stack visited)
+    (if (target? node)
+        (alter-target node visited)
+        (let* ((kids (filter (good? visited) (children node)))
+               (new-stack (append kids stack)))
+          (if (null? new-stack)
+              '()
+              (dfs-iter (car new-stack) (cdr new-stack) (cons node visited))))))
+  (dfs-iter node '() '()))
+
+;;;;
+;; TODO: Comment
+;;;
+(define (simple-bfs node target? children)
+  (define (simple-bfs-iter node queue visited)
+    (if (target? node)
+        node
+        (let ((new-queue (append queue (filter (not-in visited) (children node)))))
+          (if (null? new-queue)
+              '()
+              (simple-bfs-iter (scar new-queue) (scdr new-queue) (cons node visited))))))
+  (simple-bfs-iter node '() '()))

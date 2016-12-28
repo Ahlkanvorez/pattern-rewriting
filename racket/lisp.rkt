@@ -206,12 +206,17 @@
         #t
         (list 'got result 'expected target))))
 (define (filter f a)
-  (define (filter-of f)
-    (lambda (x accum)
-      (if (f x)
-          (cons x accum)
-          accum)))
-  (reverse (reduce (filter-of f) '() a)))
+  (define (filter-iter lst accum)
+    (cond ((null? lst)   (reverse accum))
+          ((f (car lst)) (filter-iter (cdr lst) (cons (car lst) accum)))
+          (else          (filter-iter (cdr lst) accum))))
+;  (define (filter-of f)
+;  (lambda (x accum)
+;  (if (f x)
+;     (cons x accum)
+;     accum  )))
+;  (reverse (reduce (filter-of f) '() a))
+  (filter-iter a '()))
 
 ;;;; (function list) -> boolean
 ;; Given a function which returns either true or false given any input, and a list of inputs, this function
@@ -263,7 +268,7 @@
       (f (g x))))
   (define (identity x)
     x)
-  (reduce compose-pair identity a))
+  (reduce compose-pair identity (reverse a)))
 
 ;;;; (number) -> number
 ;; Given a number, this function returns the product of that number with itself.
@@ -485,3 +490,19 @@
         #t
         (list 'got result 'expected target))))
 (define (id x) x)
+
+;;;; list -> f : element -> list
+;; Given a black-list, this function returns a function which will take an input item
+;; and return true if the given item is not in the black-list.
+;;; Example-usage (not-in-test)
+;;  ;; > '(filter (not-in '(a b c d e f g)) '(a b c 1 2 3 x y z e f g))
+;;  ;; '(1 2 3 x y z)
+(define (not-in-test)
+  (let ((result (filter (not-in '(a b c d e f g)) '(a b c 1 2 3 x y z e f g)))
+        (target '(1 2 3 x y z)))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
+(define (not-in black-list)
+  (lambda (elem)
+    (false? (member elem black-list))))
