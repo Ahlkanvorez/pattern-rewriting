@@ -17,11 +17,56 @@
 
 (require "lisp.rkt")
 
-(provide bfs dfs)
+(provide bfs dfs simple-bfs simple-dfs)
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (val (val -> boolean) (val -> val) (val -> boolean) (val -> list) (val list -> list)) -> val
+;; Given a value for the root node, a function which indicates whether the target value/node
+;; has been found, a function which alters the target value before returning, a function which
+;; indicates whether a child node is worth exploring, a function which given a value/node will
+;; return a list of new values/nodes to consider, and a function which given the current node
+;; and the list of previously visited nodes will record the current node in that list, this
+;; function will search for the target value using the Breadth-First Search algorithm, which will
+;; exhaust the new nodes given by each call of the 'children' function before calling it again on
+;; the first value given in the list resulting from the call, until either no unseen values remain,
+;; or the target is found.
+;;; Example-usage (bfs-test)
+;;; This extended example uses bfs and the expression-evaluation library to find the simplest form
+;;; representing any integer using the Successor function (+ 1 x) and the Negation function (- x),
+;;; relative to the number 0. The output is the proper, although not only, way to represent an
+;;; integer using such functions, starting from whatever reference integer is desired, with a list
+;;; of the shortest number of operations to arrive at that integer.
+;;; NOTE: This test requires exp-eval.rkt
+;;  ;; > (let* ((S (lambda (x) (+ 1 x)))
+;;  ;;          (N (lambda (x) (- x)))
+;;  ;;          (evaluate (lambda (exp) (exp-eval (list `((S u) ,S) `((N u) ,N)) '() exp))))
+;;  ;;     (bfs '((S 0))
+;;  ;;          (lambda (x) (= (evaluate (car x)) -3))
+;;  ;;          (lambda (x visited) (cons (evaluate (car x)) x))
+;;  ;;          (lambda (lst)
+;;  ;;            (lambda (x)
+;;  ;;              ((not-in lst) (car x))))
+;;  ;;          (lambda (x) (list (list `(S ,(car x)) x)
+;;  ;;                            (list `(N ,(car x)) x)))
+;;  ;;          (lambda (x lst) (cons (car x) lst))))
+;;  ;; '(-3 (N (S (S (S 0)))) ((S (S (S 0))) ((S (S 0)) ((S 0)))))
+(require "exp-eval.rkt")
+(define (bfs-test)
+  (let ((result (let* ((S (lambda (x) (+ 1 x)))
+                       (N (lambda (x) (- x)))
+                       (evaluate (lambda (exp) (exp-eval (list `((S u) ,S) `((N u) ,N)) '() exp))))
+                  (bfs '((S 0))
+                       (lambda (x) (= (evaluate (car x)) -3))
+                       (lambda (x visited) (cons (evaluate (car x)) x))
+                       (lambda (lst)
+                         (lambda (x)
+                           ((not-in lst) (car x))))
+                       (lambda (x) (list (list `(S ,(car x)) x)
+                                         (list `(N ,(car x)) x)))
+                       (lambda (x lst) (cons (car x) lst)))))
+        (target '(-3 (N (S (S (S 0)))) ((S (S (S 0))) ((S (S 0)) ((S 0)))))))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
 (define (bfs node target? alter-target good? children remember)
   (define (bfs-iter node queue visited)
     (if (target? node)
@@ -50,6 +95,32 @@
 ;;;;
 ;; TODO: Comment
 ;;;
+(define (simple-dfs node target? children)
+  (define (simple-dfs-iter node stack visited)
+    (if (target? node)
+        node
+        (let ((new-stack (append (filter (not-in visited) (children node)) stack)))
+          (if (null? new-stack)
+              '()
+              (simple-dfs-iter (scar new-stack) (scdr new-stack) (cons node visited))))))
+  (simple-dfs-iter node '() '()))
+
+;;;; (val (val -> boolean) (val -> list)) -> val
+;; Given a value for the root node, a function which indicates whether the target value/node
+;; has been found, and a function which given a value/node will return a list of new values/nodes
+;; to consider, this function will search for the target value using the Breadth-First Search
+;; algorithm, which will exhaust the new nodes given by each call of the 'children' function
+;; before calling it again on the first value given in the list resulting from the call, until
+;; either no unseen values remain, or the target is found.
+;;; Example-usage (simple-bfs-test)
+;;  ;; > (simple-bfs 1 (lambda (x) (and (< 40 x) (< x 50))) (lambda (x) (list (* x 2) (* x 3))))
+;;  ;; 48
+(define (simple-bfs-test)
+  (let ((result (simple-bfs 1 (lambda (x) (and (< 40 x) (< x 50))) (lambda (x) (list (* x 2) (* x 3)))))
+        (target 48))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
 (define (simple-bfs node target? children)
   (define (simple-bfs-iter node queue visited)
     (if (target? node)
