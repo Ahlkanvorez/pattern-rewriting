@@ -61,9 +61,10 @@
 ; Patterns of the form '((x? y?) (z? w?) (a? b?))
 ;;;; '((a? b?) (x? y?) (z? w?)) '(a list of lists and symbols) -> '(a new list transformed according to the given patterns)
 ;; Given a list of patterns, which allows for matching structural form instead of simply
-;;  testing equality of symbols, and a list of symbols and lists, the original list is transformed
-;;  according to the structural patterns provided, and the new list is returned.
-;;; Example usage: (transform-test)
+;; testing equality of symbols, and a list of symbols and lists, the original list is transformed
+;; according to the structural patterns provided, and the new list is returned. This transforms
+;; the entire expression tree  by considering every branch and node, not simply the root.
+;;; Example-usage: (transform-test)
 ;;  ;; > (transform '(((if condition? result?) (result? unless (not condition?))))
 ;;  ;;              '(if (you are hungry) (eat some food)))
 ;;  ;; '((eat some food) unless (not (you are hungry)))
@@ -75,19 +76,61 @@
       a
       (transform (cdr patterns) (transform-part (car patterns) a))))
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (patterns expression) -> expression
+;; This function continues to transform the list using the transform function until the list
+;; does not change, or until the resulting transformation has been seen previously.
+;;; Example-usage: (transform-exhaustive-test)
+;;  ;; > (transform-exhaustive '(((S (N (S x?))) (N x?)) ((N (N x?)) (I x?))
+;;  ;;                           ((S (I x?)) (S x?)) ((N (I x?) (N x?))))
+;;  ;;                         '(S (S (S (N (S (N (N (S (S (N x?)))))))))))
+;;  ;; 0
+(define (transform-exhaustive-test)
+  (let ((result (transform-exhaustive '(((S (N (S x?))) (N x?)) ((N (N x?)) (I x?))
+                                        ((S (I x?)) (S x?)) ((N (I x?) (N x?))))
+                                      '(S (S (S (N (S (N (N (S (S (N x?))))))))))))
+        (target '(I x?)))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
 (define (transform-exhaustive patterns a)
-  (let ((result (transform patterns a)))
-    (if (equal? result a)
-        result
-        (transform-exhaustive patterns result))))
+  (define (transform-exhaustive-iter a visited)
+    (let ((result (transform patterns a)))
+      (if (or (equal? result a) (member result visited))
+          result
+          (transform-exhaustive-iter result (cons result visited)))))
+  (transform-exhaustive-iter a (list a)))
 
-; Pattern of the form '(x? y?)
-;;;;
-;; TODO: Comment
-;;;
+;;;; (pattern expression) -> expression
+;; This function applies the given pattern, if applicable, to the given expression, by matching
+;; either the whole expression, or each branch of the expression tree. If one part of the tree
+;; cannot be changed, but another can be changed, the unchangeable part is left as it was.
+;;; Example-usage (transform-part-test)
+;;  ;; > (transform-part '((leaf?) (branch (leaf?) (leaf?)))
+;;  ;;                   '(branch (branch (leaf) (branch (leaf) (leaf))) (branch (branch (leaf))))
+;;  ;; '(branch
+;;  ;;   (branch
+;;  ;;    (branch (leaf) (leaf))
+;;  ;;    branch
+;;  ;;    ((branch (leaf) (leaf)))
+;;  ;;    ((branch (leaf) (leaf))))
+;;  ;;   branch
+;;  ;;   ((branch (branch (leaf))))
+;;  ;;   ((branch (branch (leaf)))))
+(define (transform-part-test)
+  (let ((result (transform-part '((leaf?) (branch (leaf?) (leaf?)))
+                                '(branch (branch (leaf) (branch (leaf) (leaf))) (branch (branch (leaf))))))
+        (target '(branch
+                  (branch
+                   (branch (leaf) (leaf))
+                   branch
+                   ((branch (leaf) (leaf)))
+                   ((branch (leaf) (leaf))))
+                  branch
+                  ((branch (branch (leaf))))
+                  ((branch (branch (leaf)))))))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
 (define (transform-part pattern a)
   (cond ((null? a) '())
         ((can-bind? (car pattern) a)
