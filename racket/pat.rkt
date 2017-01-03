@@ -261,10 +261,6 @@
   (and (can-bind-aux? pattern a)
        (not (null? (bindings pattern a)))))
 
-;; Given a pattern as a list, and an expression a,
-;; this returns an association list of variables, and
-;; constants, where variables match any structure and
-;; constants match non-symbol-non-list items.
 ;;;; (pattern expression) -> list
 ;; Given a pattern and an expression, if the pattern matches the expression, this function returns
 ;; the bindings mapping the variables in the pattern to their associated expressions within the
