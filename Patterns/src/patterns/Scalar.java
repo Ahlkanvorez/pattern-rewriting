@@ -7,7 +7,6 @@ import java.util.Objects;
 /**
  *
  * @author robertmitchell
- * @param <T> The type of the scalar
  */
 public class Scalar<T> implements Expression {
     private final T value;
