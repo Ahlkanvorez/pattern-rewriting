@@ -75,14 +75,29 @@
 (define (concatmap f a)
   (reduce append '() (map f a)))
 
-;;;;
-;; TODO: Comment
-;;;
+;;;; (pair -> anything, pair -> anything) -> ((element list) -> list)
+;; Given two functions which alter an assoc pair in some way, this function returns a new
+;; function for use in conjunction with 'reduce' which performs operations using the two given functions
+;; on pairs in an assoc list with common keys. This is a generalization of the case where the first
+;; functional argument is 'first', and the second functional argument is 'second'.
+;;; Example-usage (group-common-test)
+;;  ;; > (reduce (group-common first second) '() '((Indo-European Latin) (Indo-European Greek)
+;;  ;;                                             (Jam Grape) (Jam Plum) (Indo-European Sanskrit)))
+;;  ;; '((Indo-European (Sanskrit Greek . Latin)) (Jam (Plum . Grape)))
+(define (group-common-test)
+  (let ((result (reduce (group-common first second) '() '((Indo-European Latin) (Indo-European Greek)
+                                                          (Jam Grape) (Jam Plum) (Indo-European Sanskrit))))
+        (target '((Indo-European (Sanskrit Greek . Latin)) (Jam (Plum . Grape)))))
+    (if (equal? result target)
+        #t
+        `(got ,result expected ,target))))
 (define (group-common f g)
   (lambda (a accum)
-    (if (not (equal? #f (assoc (f a) accum)))
-        (acons (f a) (list (cons (g a) (cadr (assoc (f a) accum)))) (assoc-remove (f a) accum))
-        (acons (f a) (list (g a)) accum))))
+    (if (assoc (f a) accum)
+        (acons (f a) (list (cons (g a) (cadr (assoc (f a) accum))))
+               (assoc-remove (f a) accum))
+        (acons (f a) (list (g a))
+               accum))))
 
 ;;;; (function initial-value values) -> value
 ;; Given a function which combines two elements of data, an initial data value, and a list of data
@@ -147,8 +162,8 @@
   (reduce * 1 a))
 
 ;;;; (natural-number) -> natural-number
-;; Given a natural-number, this function returns the factorial of that number, viz. the product of the numbers from 1 to
-;; that number inclusive.
+;; Given a natural-number, this function returns the factorial of that number, viz. the product of the numbers
+;; from 1 to that number inclusive.
 ;;; Example-usage (factorial-test)
 ;;  ;; > (map factorial (range 1 7))
 ;;  ;; '(1 2 6 24 120 720)
@@ -210,12 +225,6 @@
     (cond ((null? lst)   (reverse accum))
           ((f (car lst)) (filter-iter (cdr lst) (cons (car lst) accum)))
           (else          (filter-iter (cdr lst) accum))))
-;  (define (filter-of f)
-;  (lambda (x accum)
-;  (if (f x)
-;     (cons x accum)
-;     accum  )))
-;  (reverse (reduce (filter-of f) '() a))
   (filter-iter a '()))
 
 ;;;; (function list) -> boolean
@@ -422,14 +431,15 @@
 (define (flip tree)
   (list (scar tree) (rhs tree) (lhs tree)))
 
-;; Given a key k0, a value in a list '(v0), and an association list of the form
-;;  '((k1 v1) (k2 v2) ... (kn vn))
-;; this returns the association list
-;;  '((k0 v0) (k1 v1) (k2 v2) ... (kn vn))
 ;;;; (key val lst) -> lst
 ;; Given a key, a value, and a list, this function adds the pair (key . value) to the
 ;; beginning of the given list, which if used to make an entire list, will create an
 ;; association list compatible with the assoc function.
+;; More explicitly:
+;; Given a key k0, a value in a list '(v0), and an association list of the form
+;;  '((k1 v1) (k2 v2) ... (kn vn))
+;; this returns the association list
+;;  '((k0 v0) (k1 v1) (k2 v2) ... (kn vn))
 ;;; Example-usage (acons-test)
 ;;  ;; > (acons 'Rome 'Latin '((Athens . Greek)))
 ;;  ;; '((Rome . Latin) (Athens . Greek))
@@ -442,13 +452,14 @@
 (define (acons x y a)
   (cons (cons x y) a))
 
-;; Given a key kj, and an association list of the form
-;;   '((k1 v1) (k2 v2) ... (kj vj) ... (kn vn))
-;; this returns the association list with every element except (kj vj)
 ;;;; (key assoc-list) -> assoc-list
 ;; Given a key in an association list, and that list, this function returns the given
 ;; list with all its elements except for the pair with the provided key. Note, that if
 ;; the given key does not appear in the list, the list is returned unchanged.
+;; More explicitly:
+;; Given a key kj, and an association list of the form
+;;   '((k1 v1) (k2 v2) ... (kj vj) ... (kn vn))
+;; this returns the association list with every element except (kj vj)
 ;;; Example-usage (assoc-remove-test)
 ;;  ;; > (assoc-remove 'America '((America . American) (Rome . Latin) (Athens . Greek)))
 ;;  ;; '((Rome . Latin) (Athens . Greek))
