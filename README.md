@@ -1,6 +1,6 @@
 # Pattern Rewriting
 <p>
-A pattern matching and rewrite-rule system in lisp (and being translated to Java) with application to equation solving, symbolic computation, automated theorem proving, translation bewteen programming languages, and grammatical analysis and transformation of sentences. Many of the examples in the code base already are symbolic computation problems, and I intend to add an extended application in parsing and transforming Latin sentasdasdasdeasdasd
+A pattern matching and rewrite-rule system in lisp (being translated into Java) with application to equation solving, symbolic computation, automated theorem proving, translation bewteen programming languages, and grammatical analysis and transformation of sentences. Many of the examples in the code base already are symbolic computation problems, and I intend to add an extended application in parsing and transforming Latin sentences.
 </p>
 
 <p>
