@@ -23,9 +23,15 @@ import java.util.stream.Collectors;
  */
 public interface Expression {
 
-    /**
+    /** Every Expression is either an indivisible unit, or is composed of some number of subexpressions. The
+     * subexpressions are used for matching Patterns, and rewriting to create new Expressions using RewriteRules. An
+     * Expression can be thought of as a tree, where each subtree is a subexpression, and each node in the tree contains
+     * some sort of information defining the contents of the Expression, with the number and location of child-branches
+     * defining the structure of the Expression. A Pattern matches an Expression if it has a compatible structure, which
+     * can either be identical, or can match by way of variable elements matching whole subtrees within the Expression,
+     * and if every non-variable element is identical to the corresponding non-variable element in the Expression.
      *
-     * @return
+     * @return a collection of the subexpressions making up this Expression, or null if this Expression is an unit.
      */
     Collection<Expression> subExpressions();
 }
