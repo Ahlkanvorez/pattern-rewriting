@@ -1,12 +1,9 @@
 package patterns;
 
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 /**
- * An Expression is the basic object which Patterns match.
+ * A Pattern is the basic descriptor of a set of Expressions.
  * In Category Theoretic terms, Expressions are dots, and Rewrite-Rules are arrows; with Patterns partitioning the
  * expressions within the Category of Expressions into sub-categories where each expression is reachable from another by
  * the available Rewrite-Rules, which is to say, given a sub-category defined by a set of Patterns, every Expression in
@@ -17,15 +14,26 @@ import java.util.stream.Collectors;
  * of compatible Patterns) express a state of being where the the first Pattern is written as the second Pattern, which
  * results in the rewritten Expression, differing from the original Expression, and matching the second Pattern.
  *
- * An Expression can be made up of sub-expressions, or it can be an indivisible unit.
+ * Any class implementing Pattern should be immutable.
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
-public interface Expression {
+public interface Pattern {
 
     /**
      *
+     * @param e
      * @return
      */
-    Collection<Expression> subExpressions();
+    boolean matches(Expression e);
+
+    /**
+     *
+     * @param e
+     * @return
+     */
+    Map<Expression, Expression> match(Expression e);
+
+    Expression expressionFrom(Map<Expression, Expression> bindings);
+
 }
