@@ -3,7 +3,13 @@ package patterns;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/** A PatternVariable is a Pattern which is capable of matching any Expression to which it is compared. Larger Patterns
+ * are made up of a combination of PatternVariables and PatternConstants in the internal tree of the Pattern. A
+ * PatternVariable has only one representation in a String form, viz. its name, and consequently it can be thought of
+ * as simply a variable with its given name, such as "x", instead of as a whole object wrapping a string.
+ *
+ * TODO: Consider caching PatternVariable instances by name.
+ *
  * A Pattern Variable is Immutable.
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
