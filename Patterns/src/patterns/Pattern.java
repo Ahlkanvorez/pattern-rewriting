@@ -41,7 +41,7 @@ public interface Pattern {
      * @param e The Expression in which corresponding elements are gathered for the variable terms in this Pattern.
      * @return A mapping of all variable terms in this Pattern to the corresponding elements of the given Expression.
      */
-    Map<Expression, Expression> match(Expression e);
+    Map<Pattern, Expression> match(Expression e);
 
     /** Given a mapping of bindings, i.e. variable expressions from a Pattern to Expressions from a parent Expression,
      * this method returns a new Expression by mapping the variable portions of the Pattern of this instance to the
@@ -53,6 +53,5 @@ public interface Pattern {
      * @param bindings The mapping to use for instantiating a new Expression which matches this Pattern.
      * @return A new Expression matching this Pattern using the information from the given mapping.
      */
-    Expression expressionFrom(Map<Expression, Expression> bindings);
-
+    Expression expressionFrom(Map<Pattern, Expression> bindings);
 }
