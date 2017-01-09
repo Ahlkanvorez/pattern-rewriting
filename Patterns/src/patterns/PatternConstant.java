@@ -1,17 +1,24 @@
 package patterns;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
-/** A PatternVariable is a Pattern which is capable of matching any Expression to which it is compared. Larger Patterns
+/** A PatternConstant is a Pattern which is capable of matching any Expression to which it is compared. Larger Patterns
  * are made up of a combination of PatternVariables and PatternConstants in the internal tree of the Pattern. A
- * PatternVariable has only one representation in a String form, viz. its name, and consequently it can be thought of
- * as simply a variable with its given name, such as "x", instead of as a whole object wrapping a string.
+ * PatternConstant is defined by the Object constant it contains, and thus its String representation is based on that
+ * Object.
+ * Note: for constructing a tree of Patterns, the constant Object of a PatternConstant can be made a list of
+ * PatternConstant objects, which each can have more lists as objects; thus the list-of-lists-of-etc creates a tree
+ * structure of Patterns, and the PatternConstant .equals(...) and .matches(...) methods ensure that equality and
+ * matchability follow the branches down to the leaves of the tree, since two PatternConstant cannot be equal or match
+ * unless their constants are equal, in that case being the subtrees.
  *
  * A PatternConstant is intended to be immutable, however this can be abused. Avoid using mutable objects as constants,
  * or create a copy of your mutable object and pass it as the constant subsequently deleting any references to it, in
  * order to guarantee immutability.
+ *
+ * TODO: Consider making this class package private and adding a static factory method to Pattern for its instantiation.
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
@@ -32,12 +39,12 @@ public final class PatternConstant implements Pattern {
     /** A PatternConstant exists to allow matching with only Expressions which represent the same value as that of the
      * PatternConstant.
      *
-     * TODO: Consider making the Object directly available; note: that would further break immutability of Patterns.
+     * TODO: Consider requiring the Object be Cloneable, to allow the returning of a clone and not leaking a reference.
      *
-     * @return a String representation of the internal constant Object, to avoid leaking references thereto.
+     * @return the internal constant Object.
      */
-    public String constant() {
-        return this.constant.toString();
+    public Object constant() {
+        return this.constant;
     }
 
     /** A PatternConstant will only match with an Expression whose internal value is equal to this.constant.
@@ -47,9 +54,10 @@ public final class PatternConstant implements Pattern {
      */
     @Override
     public boolean matches(Expression e) {
-        // TODO: Either add a method to Expression allowing the accessing of internal data for comparison, or create
-        // TODO: an ExpressionConstant class and check both that e is of that class and has an equal constant member.
-        return this.constant.toString().equals(e.toString());
+        if (e == null || !(e instanceof ConcreteExpression)) {
+            return false;
+        }
+        return this.constant.equals(((ConcreteExpression) e).value());
     }
 
     /** Matches the given Expression to this one, and returns a mapping which maps this Pattern to the associated
@@ -63,8 +71,7 @@ public final class PatternConstant implements Pattern {
      */
     @Override
     public Map<Pattern, Expression> match(Expression e) {
-        // TODO: Should a PatternConstant return null or an empty map to indicate no rewrite is required?
-        return new HashMap<>();
+        return Collections.EMPTY_MAP;
     }
 
     /** Creates a new Expression which matches this Pattern given the provided mappings. Since this is a PatternConstant
@@ -76,8 +83,7 @@ public final class PatternConstant implements Pattern {
      */
     @Override
     public Expression expressionFrom(Map<Pattern, Expression> bindings) {
-        // TODO: Create ExpressionConstant class and instantiate & return a new ExpressionConstant with this.constant.
-        return null;
+        return new ConcreteExpression(this.constant);
     }
 
     /** Two PatternConstant instances are equal if and only if they have equal constants under .equals().

@@ -9,6 +9,7 @@ import java.util.Map;
  * as simply a variable with its given name, such as "x", instead of as a whole object wrapping a string.
  *
  * TODO: Consider caching PatternVariable instances by name.
+ * TODO: Consider making this class package private and adding a static factory method to Pattern for its instantiation.
  *
  * A Pattern Variable is Immutable.
  *
