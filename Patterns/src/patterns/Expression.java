@@ -31,4 +31,18 @@ public interface Expression {
      * @return a collection of the subexpressions making up this Expression, or null if this Expression is an unit.
      */
     Collection<Expression> subExpressions();
+
+    /** Creates and returns an Expression representing the given data; if an Expression tree is desired, then the data
+     * Object should be a Collection of Expressions representing each branch in the tree; whereas, if a simple unit
+     * Expression is desired, any non-Expression non-Collection Object can be given.
+     * Note: if the desired Expression is a list of data, e.g. (1, 2, 3, 4, 5), then it needs to be an Expression of
+     * a Collection of Expressions each representing the respective elements of that list.
+     *
+     * @param data The data to represent in this Expression.
+     * @return a new Expression representing the data given.
+     */
+    static Expression of(Object data) {
+        // TODO: Consider utilizing another implementing class for Collection objects or Map objects.
+        return new ConcreteExpression(data);
+    }
 }

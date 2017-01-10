@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * Any class implementing Pattern should be immutable.
  *
- * TODO: Determine whether Pattern should extend Expression.
+ * TODO: Determine whether Pattern should extend Expression, to allow the rewriting of a Pattern with a RewriteRule.
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
@@ -54,4 +54,35 @@ public interface Pattern {
      * @return A new Expression matching this Pattern using the information from the given mapping.
      */
     Expression expressionFrom(Map<Pattern, Expression> bindings);
+
+    /** Creates a Pattern with no variables only matching an Expression containing an Object equal to the given one.
+     *
+     * @param data The contents of the Pattern.
+     * @return A Pattern matching Expressions which contain an Object equal to the given one.
+     */
+    static Pattern of(Object data) {
+        return new PatternConstant(data);
+    }
+
+    /** Creates a Pattern based on the given data, being either a Variable with the given name (a String), or
+     *
+     * @param data The data to create a Pattern based on.
+     * @param variable true if the desired Pattern is a variable, false otherwise.
+     * @return a Pattern representing the structure and contents of the given data.
+     */
+    static Pattern of(Object data, boolean variable) {
+        if (variable && !(data instanceof String)) {
+            throw new IllegalArgumentException("A Variable Pattern must have a String for its data.");
+        }
+        return variable ? new PatternVariable((String) data) : new PatternConstant(data);
+    }
+
+    /** Instantiates a Pattern representing a variable with the given String as a name.
+     *
+     * @param name The name of the created Variable Pattern.
+     * @return A Pattern representing a variable of the given String name.
+     */
+    static Pattern variableOf(String name) {
+        return new PatternVariable(name);
+    }
 }

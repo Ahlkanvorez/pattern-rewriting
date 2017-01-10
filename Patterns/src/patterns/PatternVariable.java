@@ -15,16 +15,18 @@ import java.util.Map;
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
-public final class PatternVariable implements Pattern {
+final class PatternVariable implements Pattern {
     private final String name;
 
     /** Instantiates a new PatternVariable with the given name, which is used in representing the Pattern in text.
      * A PatternVariable is intended to match any valid Expression, and to be used in constructing larger Patterns which
      * are capable of matching unspecified Expressions at some part of their internal Pattern-tree.
+     * Because this class and constructor are package-private, a PatternVariable cannot be instantiated but through the
+     * static-factory method in the Pattern interface; however, all other methods are usable once an instance is had.
      *
      * @param name The name to use in representing this PatternVariable
      */
-    public PatternVariable(final String name) {
+    PatternVariable(final String name) {
         if (name == null || name.equals("")) {
             throw new IllegalArgumentException("A Pattern Variable can have neither a null name nor an empty name.");
         }

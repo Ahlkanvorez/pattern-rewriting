@@ -15,7 +15,7 @@ import java.util.Objects;
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
-public class ConcreteExpression implements Expression {
+class ConcreteExpression implements Expression {
     private final Object value;
 
     /** Instantiates a new ConcreteExpression with the given object.
@@ -24,15 +24,15 @@ public class ConcreteExpression implements Expression {
      *
      * @param value The value for this ConcreteExpression instance.
      */
-    public ConcreteExpression(final Object value) {
+    ConcreteExpression(final Object value) {
         if (value instanceof Collection) {
             for (Object obj : (Collection) value) {
                 if (!(obj instanceof Expression)) {
-                    throw new IllegalArgumentException("A ConcreteExpression tree cannot contain non-Expression objects.");
+                    throw new IllegalArgumentException("An Expression tree cannot contain non-Expression objects.");
                 }
             }
         }
-        this.value = Objects.requireNonNull(value, "An ConcreteExpression cannot have a null value.");
+        this.value = Objects.requireNonNull(value, "An Expression cannot have a null value.");
     }
 
     /** The value of this ConcreteExpression defines entirely the contents thereof.

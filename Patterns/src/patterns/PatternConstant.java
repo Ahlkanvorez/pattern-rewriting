@@ -18,21 +18,21 @@ import java.util.Objects;
  * or create a copy of your mutable object and pass it as the constant subsequently deleting any references to it, in
  * order to guarantee immutability.
  *
- * TODO: Consider making this class package private and adding a static factory method to Pattern for its instantiation.
- *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
-public final class PatternConstant implements Pattern {
+final class PatternConstant implements Pattern {
     private final Object constant;
 
     /** Instantiates a new PatternConstant with the given Object as data, meaning it will only match another
      * PatternConstant with a constant equal to its own under .equals().
+     * Because this class and constructor are package-private, a PatternConstant cannot be instantiated but through the
+     * static-factory method in the Pattern interface; however, all other methods are usable once an instance is had.
      *
      * TODO: Consider requiring constant be Cloneable, to protect from passing and later changing a mutable value.
      *
      * @param constant The constant value which this PatternConstant represents and solely matches.
      */
-    public PatternConstant(final Object constant) {
+    PatternConstant(final Object constant) {
         this.constant = Objects.requireNonNull(constant, "A Pattern Constant cannot be null.");
     }
 
