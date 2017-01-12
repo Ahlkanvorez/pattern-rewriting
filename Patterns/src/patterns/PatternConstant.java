@@ -1,8 +1,6 @@
 package patterns;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /** A PatternConstant is a Pattern which is capable of matching any Expression to which it is compared. Larger Patterns
  * are made up of a combination of PatternVariables and PatternConstants in the internal tree of the Pattern. A
@@ -47,31 +45,76 @@ final class PatternConstant implements Pattern {
         return this.constant;
     }
 
-    /** A PatternConstant will only match with an Expression whose internal value is equal to this.constant.
+    /** A PatternConstant will match an Expression whose structure is compatible up to PatternVariable leaves which
+     * can match whole branches of an Expression, and whose values at each node are equal to those in the Expression
+     * tree, or if the Pattern is a scalar value, it will only match an Expression with an equal scalar value.
+     *
+     * TODO: Make the .value() member a requirement to fulfill the Expression interface.
+     * TODO: Review the comments for this method.
      *
      * @param e The Expression to check for the exhibition of the pattern in this Pattern instance.
      * @return true if the given Expression represents the same value as this.constant.
      */
     @Override
-    public boolean matches(Expression e) {
+    public boolean matches(final Expression e) {
         if (e == null || !(e instanceof ConcreteExpression)) {
             return false;
         }
-        return this.constant.equals(((ConcreteExpression) e).value());
+        ConcreteExpression exp = (ConcreteExpression) e;
+        if (this.constant instanceof Collection) {
+            // If the Pattern and Expression do not both contain Collections, i.e. are trees, the match fails.
+            if (!(exp.value() instanceof Collection)) {
+                return false;
+            }
+            final Iterator<Expression> expressionIterator = ((Collection<Expression>) exp.value()).iterator();
+            final Iterator<Pattern> patternIterator = ((Collection<Pattern>) this.constant).iterator();
+            while (expressionIterator.hasNext() && patternIterator.hasNext()) {
+                // If any of the branches do not match, the whole match fails.
+                if (!patternIterator.next().matches(expressionIterator.next())) {
+                    return false;
+                }
+            }
+            // If the Pattern and the Expression have an unequal number of branches at this node, the match fails.
+            if (patternIterator.hasNext() || expressionIterator.hasNext()) {
+                return false;
+            }
+        }
+        // If they do not represent trees, they must have identical scalar data values.
+        return this.constant.equals(exp.value());
     }
 
     /** Matches the given Expression to this one, and returns a mapping which maps this Pattern to the associated
-     * portion of the given Expression. Since this is a PatternConstant, this will never map any values in a mapping,
-     * because there are no variable portions to map; consequently, an empty map is always returned, and during the
-     * rewrite process when this empty map is passed to expressionsFrom(...), an appropriate Expression is returned
-     * with the value represented by this PatternConstant.
+     * portion of the given Expression. Since this is a PatternConstant, this will never map to any values which do not
+     * match the structure of this Pattern up to any PatternVariables contained in the leaves of the tree, or if it is
+     * a simple value, match the value explicitly.
+     *
+     * TODO: Review the comments for this method.
      *
      * @param e The Expression in which corresponding elements are gathered for the variable terms in this Pattern.
-     * @return An empty mapping, because a PatternConstant has no variable portions to bind to the given Expression.
+     * @return A map which sends variable components in this Pattern tree to their corresponding Expressions, or an
+     *          empty map if this is not a tree.
      */
     @Override
-    public Map<Pattern, Expression> match(Expression e) {
-        return Collections.EMPTY_MAP;
+    public Map<Pattern, Expression> match(final Expression e) {
+        if (!this.matches(e)) {
+            throw new IllegalArgumentException("A Pattern cannot bind to an Expression it does not match with .matches()");
+        }
+        if (this.constant instanceof Collection) {
+            if (e.subExpressions().isEmpty()) {
+                // An empty list will not correspond to any Variables in leaf positions, so an empty list is returned.
+                return Collections.emptyMap();
+            }
+            // If the constant is a Collection, the constructor guarantees it will be a Collection<Pattern>.
+            Map<Pattern, Expression> accumulateMap = new HashMap<>();
+            final Iterator<Expression> expressionIterator = e.subExpressions().iterator();
+            final Iterator<Pattern> patternIterator = ((Collection<Pattern>)this.constant).iterator();
+            // If the pattern matches the Expression structurally, then there will be an equal number of branches.
+            while (expressionIterator.hasNext() && patternIterator.hasNext()) {
+                accumulateMap.putAll(patternIterator.next().match(expressionIterator.next()));
+            }
+            return accumulateMap;
+        }
+        return Collections.emptyMap();
     }
 
     /** Creates a new Expression which matches this Pattern given the provided mappings. Since this is a PatternConstant
@@ -82,7 +125,7 @@ final class PatternConstant implements Pattern {
      * @return an Expression whose value is this.constant
      */
     @Override
-    public Expression expressionFrom(Map<Pattern, Expression> bindings) {
+    public Expression expressionFrom(final Map<Pattern, Expression> bindings) {
         return new ConcreteExpression(this.constant);
     }
 
@@ -92,7 +135,7 @@ final class PatternConstant implements Pattern {
      * @return true if the given object is a PatternConstant whose constant is equal to this one's, and false otherwise.
      */
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         if (other == this) {
             return true;
         }

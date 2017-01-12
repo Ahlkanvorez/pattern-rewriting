@@ -28,7 +28,7 @@ class ConcreteExpression implements Expression {
         if (value instanceof Collection) {
             for (Object obj : (Collection) value) {
                 if (!(obj instanceof Expression)) {
-                    throw new IllegalArgumentException("An Expression tree cannot contain non-Expression objects.");
+                    throw new IllegalArgumentException("An Expression tree cannot contain non-Expression objects. " + obj.getClass());
                 }
             }
         }
