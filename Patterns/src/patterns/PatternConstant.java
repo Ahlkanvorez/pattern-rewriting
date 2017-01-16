@@ -85,6 +85,10 @@ final class PatternConstant implements Pattern {
             if (patternIterator.hasNext() || expressionIterator.hasNext()) {
                 return false;
             }
+            /* Otherwise, they have an equal number of branches at this node, and each branch is equal to the other, so
+                this Pattern matches the given Expression.
+             */
+            return true;
         }
         // If they do not represent trees, they must have identical scalar data values.
         return this.constant.equals(exp.value());

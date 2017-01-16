@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2acd824-49e6-4b34-b088-2be2c30c5d5e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/patterns/PatternConstantTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Patterns.iml" afterPath="$PROJECT_DIR$/Patterns.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/PatternConstant.java" afterPath="$PROJECT_DIR$/src/patterns/PatternConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/patterns/ExpressionSearchTest.java" afterPath="$PROJECT_DIR$/tests/patterns/ExpressionSearchTest.java" />
     </list>
     <ignored path="Patterns.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,53 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ExpressionSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/patterns/ExpressionSearch.java">
+      <file leaf-file-name="Pattern.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/patterns/Pattern.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="46" column="48" lean-forward="true" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExpressionSearchTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/patterns/ExpressionSearchTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConcreteExpression.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-31">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BreadthFirstSearch.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../java-algorithms/out/artifacts/Algorithms_jar/Algorithms.jar!/algs/search/BreadthFirstSearch.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DoublyLinkedList.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../java-algorithms/out/artifacts/Algorithms_jar/Algorithms.jar!/algs/datastructures/DoublyLinkedList.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="217" column="51" lean-forward="true" selection-start-line="217" selection-start-column="51" selection-end-line="217" selection-end-column="51" />
+            <state relative-caret-position="583">
+              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,9 +47,24 @@
       <file leaf-file-name="PatternConstant.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="433">
+              <caret line="89" column="15" lean-forward="false" selection-start-line="89" selection-start-column="15" selection-end-line="89" selection-end-column="15" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatternConstantTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/patterns/PatternConstantTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding>
+                <element signature="e#1828#1829#0" expanded="true" />
+                <element signature="e#1893#1894#0" expanded="true" />
+                <element signature="e#1952#1953#0" expanded="true" />
+                <element signature="e#2015#2016#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,12 +114,13 @@
         <option value="$PROJECT_DIR$/src/patterns/ExpressionScalar.java" />
         <option value="$PROJECT_DIR$/src/patterns/PatternVariable.java" />
         <option value="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
-        <option value="$PROJECT_DIR$/src/patterns/Pattern.java" />
         <option value="$PROJECT_DIR$/src/patterns/Expression.java" />
         <option value="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" />
-        <option value="$PROJECT_DIR$/src/patterns/PatternConstant.java" />
         <option value="$PROJECT_DIR$/src/patterns/ExpressionSearch.java" />
         <option value="$PROJECT_DIR$/tests/patterns/ExpressionSearchTest.java" />
+        <option value="$PROJECT_DIR$/src/patterns/Pattern.java" />
+        <option value="$PROJECT_DIR$/tests/patterns/PatternConstantTest.java" />
+        <option value="$PROJECT_DIR$/src/patterns/PatternConstant.java" />
       </list>
     </option>
   </component>
@@ -190,46 +163,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Patterns" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Algorithms.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Patterns" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Algorithms.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datastructures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -288,28 +221,8 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExpressionSearchTest.testPeanoArithmetic">
-    <configuration default="false" name="Expression" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="patterns.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="patterns.Expression" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Patterns" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="ExpressionSearchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PatternConstantTest">
+    <configuration default="false" name="PatternConstantTest.testStaticFactoryVariableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="patterns.*" />
@@ -320,7 +233,85 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.ExpressionSearchTest" />
+      <option name="MAIN_CLASS_NAME" value="patterns.PatternConstantTest" />
+      <option name="METHOD_NAME" value="testStaticFactoryVariableTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PatternConstantTest.testStaticFactoryStringPatternTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="patterns.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Patterns" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="patterns" />
+      <option name="MAIN_CLASS_NAME" value="patterns.PatternConstantTest" />
+      <option name="METHOD_NAME" value="testStaticFactoryStringPatternTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PatternConstantTest.testStaticFactoryCollectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="patterns.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Patterns" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="patterns" />
+      <option name="MAIN_CLASS_NAME" value="patterns.PatternConstantTest" />
+      <option name="METHOD_NAME" value="testStaticFactoryCollectionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PatternConstantTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="patterns.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Patterns" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="patterns" />
+      <option name="MAIN_CLASS_NAME" value="patterns.PatternConstantTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -335,7 +326,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ExpressionSearchTest.testSearchAllArgumentsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PatternConstantTest.testMatches" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="patterns.*" />
@@ -346,34 +337,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.ExpressionSearchTest" />
-      <option name="METHOD_NAME" value="testSearchAllArgumentsNull" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ExpressionSearchTest.testPeanoArithmetic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="patterns.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Patterns" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.ExpressionSearchTest" />
-      <option name="METHOD_NAME" value="testPeanoArithmetic" />
+      <option name="MAIN_CLASS_NAME" value="patterns.PatternConstantTest" />
+      <option name="METHOD_NAME" value="testMatches" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -835,18 +800,20 @@
       <envs />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.Expression" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest.testSearchAllArgumentsNull" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest.testPeanoArithmetic" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryVariableTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryStringPatternTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryCollectionTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PatternConstantTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testMatches" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest.testPeanoArithmetic" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ExpressionSearchTest.testSearchAllArgumentsNull" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Expression" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PatternConstantTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testMatches" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryCollectionTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryStringPatternTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PatternConstantTest.testStaticFactoryVariableTest" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -908,7 +875,7 @@
       <workItem from="1484079171666" duration="78000" />
       <workItem from="1484079265324" duration="10356000" />
       <workItem from="1484159917287" duration="2061000" />
-      <workItem from="1484586263032" duration="6794000" />
+      <workItem from="1484586263032" duration="8894000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented parsing Expression trees from a string which is formatted using prefix notation, without parentheses.&#10;&#10;TODO: Implement more default operators for lookup, and implement the ability to register custom operators in the lookup table. Also, implement translating a String from prefix to infix, to allow parsing of infix expressions.&#10;&#10;&#10;Add comments ASAP.">
       <created>1477937118086</created>
@@ -987,43 +954,50 @@
       <option name="project" value="LOCAL" />
       <updated>1484180330370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implemented a basic test for the Expression Search which finds the shortest representation of an integer as some composition of the successor function (x -&gt; x + 1) and the negating function (x -&gt; -x) applied to the integer 0.">
+      <created>1484608576790</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1484608576790</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 04m 34s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest - 2017.01.16 at 17h 58m 53s.xml">
+      <configuration name="PatternConstantTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 09m 44s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 51m 57s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 10m 40s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 53m 02s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 10m 51s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 54m 01s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 12m 49s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 55m 13s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 12m 58s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 55m 16s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 13m 18s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 55m 18s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 13m 30s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 57m 37s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 15m 00s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 58m 43s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExpressionSearchTest_testPeanoArithmetic - 2017.01.16 at 17h 15m 04s.xml">
-      <configuration name="ExpressionSearchTest.testPeanoArithmetic" configurationId="JUnit" />
+    <history-entry file="PatternConstantTest_testMatches - 2017.01.16 at 17h 58m 47s.xml">
+      <configuration name="PatternConstantTest.testMatches" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52524000" />
+    <option name="totallyTimeSpent" value="54624000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -1047,13 +1021,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26020408" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26020408" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23137973" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23137973" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1123,11 +1097,12 @@
     <MESSAGE value="Commented more fully ConcreteExpression, added static factory methods in the interfaces Pattern and Expression, and made the implementing classes thereof package-private with package-private constructors, making the static factory methods the only access to instantiating them outside of the package." />
     <MESSAGE value="Included a jar for my Algorithms library (see the git repo java-algorithms, https://github.com/Ahlkanvorez/java-algorithms), and created and commented a class for searching Expression graphs constructed by RewriteRules." />
     <MESSAGE value="Began writing tests, and completing a correction in the PatternConstant class which was overlooked." />
-    <option name="LAST_COMMIT_MESSAGE" value="Began writing tests, and completing a correction in the PatternConstant class which was overlooked." />
+    <MESSAGE value="Implemented a basic test for the Expression Search which finds the shortest representation of an integer as some composition of the successor function (x -&gt; x + 1) and the negating function (x -&gt; -x) applied to the integer 0." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented a basic test for the Expression Search which finds the shortest representation of an integer as some composition of the successor function (x -&gt; x + 1) and the negating function (x -&gt; -x) applied to the integer 0." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1136,14 +1111,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/patterns/ExpressionSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1466,22 +1433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/patterns/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../../java-algorithms/out/artifacts/Algorithms_jar/Algorithms.jar!/algs/search/BreadthFirstSearch.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1516,10 +1467,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/patterns/ExpressionSearchTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="583">
+          <caret line="82" column="1" lean-forward="true" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/patterns/Pattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="89" column="15" lean-forward="false" selection-start-line="89" selection-start-column="15" selection-end-line="89" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/patterns/PatternConstantTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1952#1953#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
           </folding>
         </state>
       </provider>
