@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -39,15 +40,22 @@ class ExpressionSearchTest {
                 return false;
             }
             int sum = 0;
-            for (Expression e : expr.subExpressions()) {
-                if (e.toString().equals("S")) {
+            List<String> expressions = new ArrayList<>();
+            for (Expression subExpr = expr; !subExpr.subExpressions().isEmpty();) {
+                final Iterator<Expression> subExprIterator = subExpr.subExpressions().iterator();
+                expressions.add(subExprIterator.next().toString());
+                subExpr = subExprIterator.next();
+            }
+            for (int i = expressions.size() - 1; i >= 0; --i) {
+                if (expressions.get(i).toString().equals("S")) {
                     sum++;
-                } else if (e.toString().equals("N")) {
+                } else if (expressions.get(i).toString().equals("N")) {
                     sum = -sum;
                 }
             }
             return sum == peanoTargetInt;
         };
+
     }
 
     /**
@@ -63,10 +71,13 @@ class ExpressionSearchTest {
     }
 
     /**
-     * The expected result is that an Expression can be reached which evaluates to -12.
+     * The expected result is that an Expression can be reached which evaluates to -12, which in particular is the
+     * shortest possible representation of -12 using the two operators of S for the successor function (x -> x + 1), and
+     * N for the negative function (x -> -x), viz. [N, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, 0]]]]]]]]]]]]].
      */
     @Test
     void testPeanoArithmetic() {
-        assert search(zero, peanoRules, peanoIsTarget) != null;
+        assert search(zero, peanoRules, peanoIsTarget).toString()
+                .equals("[N, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, 0]]]]]]]]]]]]]");
     }
 }

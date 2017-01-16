@@ -31,6 +31,13 @@ final class PatternConstant implements Pattern {
      * @param constant The constant value which this PatternConstant represents and solely matches.
      */
     PatternConstant(final Object constant) {
+        if (constant instanceof Collection) {
+            for (final Object elem : (Collection) constant) {
+                if (!(elem instanceof Pattern)) {
+                    throw new IllegalArgumentException("A Pattern cannot have non-Pattern sub-components.");
+                }
+            }
+        }
         this.constant = Objects.requireNonNull(constant, "A Pattern Constant cannot be null.");
     }
 
@@ -126,6 +133,14 @@ final class PatternConstant implements Pattern {
      */
     @Override
     public Expression expressionFrom(final Map<Pattern, Expression> bindings) {
+        if (this.constant instanceof Collection) {
+            List<Expression> accum = new ArrayList<>();
+            // If the constant is a Collection, then the constructor ensures it is a Collection<Pattern>.
+            for (final Pattern pat : (Collection<Pattern>) this.constant) {
+                accum.add(pat.expressionFrom(bindings));
+            }
+            return new ConcreteExpression(accum);
+        }
         return new ConcreteExpression(this.constant);
     }
 
