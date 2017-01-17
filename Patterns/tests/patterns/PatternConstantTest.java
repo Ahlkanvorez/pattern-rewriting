@@ -1,23 +1,26 @@
 package patterns;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * TODO: Add tests for a tree pattern with a variable subtree and a constant subtree.
+ *
  * Created by robertmitchell on 1/16/17.
  */
 class PatternConstantTest {
     private String stringInput;
-    private String variableName;
     private Collection<Pattern> collectionInput;
     private Pattern stringPattern;
     private Pattern treePattern;
-    private Pattern variablePattern;
 
     private Collection<Expression> equalCollectionExpressionInput;
     private Collection<Expression> differentCollectionExpressionInput;
@@ -26,12 +29,8 @@ class PatternConstantTest {
     private Expression equalCollectionExpression;
     private Expression differentCollectionExpression;
 
-
     @BeforeEach
     void setUp() {
-        variableName = "not-x";
-        variablePattern = Pattern.of(variableName, true);
-
         stringInput = "Hello, world!";
         collectionInput = new ArrayList<>();
         stringPattern = Pattern.of(stringInput);
@@ -48,11 +47,6 @@ class PatternConstantTest {
 
         equalCollectionExpression = Expression.of(equalCollectionExpressionInput);
         differentCollectionExpression = Expression.of(differentCollectionExpressionInput);
-    }
-
-    @Test
-    void testStaticFactoryVariableTest() {
-        assert variablePattern instanceof PatternVariable;
     }
 
     @Test
@@ -82,27 +76,48 @@ class PatternConstantTest {
 
     @Test
     void testMatch() {
-
+        assert stringPattern.match(equalStringExpression).equals(Collections.emptyMap());
+        try {
+            stringPattern.match(differentStringExpression);
+        } catch (Exception e) {
+            assert e instanceof IllegalArgumentException;
+        }
+        assert treePattern.match(equalCollectionExpression).equals(Collections.emptyMap());
+        try {
+            treePattern.match(differentCollectionExpression);
+        } catch (Exception e) {
+            assert e instanceof IllegalArgumentException;
+        }
     }
 
     @Test
     void testExpressionFrom() {
-
+        assert stringPattern.expressionFrom(Collections.emptyMap()).equals(equalStringExpression);
+        assert !stringPattern.expressionFrom(Collections.emptyMap()).equals(differentStringExpression);
+        assert treePattern.expressionFrom(Collections.emptyMap()).equals(equalCollectionExpression);
+        assert !treePattern.expressionFrom(Collections.emptyMap()).equals(differentCollectionExpression);
     }
 
     @Test
     void testEquals() {
-
+        assert stringPattern.equals(Pattern.of(stringInput));
+        assert !stringPattern.equals(treePattern);
+        assert treePattern.equals(Pattern.of(collectionInput));
+        assert !treePattern.equals(Pattern.of(Arrays.asList(Pattern.of(stringInput + "turtles"))));
     }
 
     @Test
     void testHashCode() {
-
+        assert stringPattern.hashCode() == Pattern.of(stringInput).hashCode();
+        assert stringPattern.hashCode() != treePattern.hashCode();
+        assert treePattern.hashCode() == Pattern.of(collectionInput).hashCode();
+        assert treePattern.hashCode() != Pattern.of(Arrays.asList(Pattern.of(stringInput + "turtles"))).hashCode();
     }
 
     @Test
     void testToString() {
-
+        assert stringPattern.toString().equals(stringInput);
+        assert treePattern.toString().equals(equalCollectionExpressionInput.toString());
     }
 
 }
