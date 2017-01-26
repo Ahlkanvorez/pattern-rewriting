@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * TODO: Add tests for a tree pattern with a variable subtree and a constant subtree.
  *
- * Created by robertmitchell on 1/16/17.
+ * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
 class PatternConstantTest {
     private String stringInput;
