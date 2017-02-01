@@ -42,7 +42,10 @@ public interface Expression {
      * @return a new Expression representing the data given.
      */
     static Expression of(Object data) {
-        // TODO: Consider utilizing another implementing class for Collection objects or Map objects.
+        // TODO: Consider utilizing another implementing class for Map objects.
+        if (data instanceof Collection) {
+            return new ConcreteExpressionTree(data);
+        }
         return new ConcreteExpression(data);
     }
 }

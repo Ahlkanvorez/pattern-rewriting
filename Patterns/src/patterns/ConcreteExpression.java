@@ -5,13 +5,9 @@ import java.util.Collections;
 import java.util.Objects;
 
 /** An ConcreteExpression is an Expression which should represent a non-collection value. Larger Expressions are made up
- * of a combination of ConcreteExpressions with value values and ConcreteExpressions with a list of ConcreteExpressions
+ * of a combination of ConcreteExpressions with scalar values and ConcreteExpressionTrees with a list of ConcreteExpressions
  * for values. A ConcreteExpression is defined by the Object value it contains, and thus its String representation is
  * based on that Object.
- *
- * TODO: Consider breaking this class into two classes; one for scalars and another for trees, making the classes
- * TODO: package private, and instantiable only through a static factory method in the Expression interface, which
- * TODO: creates tree Expressions when given Collections, and scalars otherwise.
  *
  * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
@@ -19,19 +15,12 @@ class ConcreteExpression implements Expression {
     private final Object value;
 
     /** Instantiates a new ConcreteExpression with the given object.
-     * If the provided object is a Collection representing an Expression tree, then every object in that collection must
-     * be some type of Expression.
+     * Note: if the value is a Collection, then this constructor should only be invoked from the context
+     * of a ConcreteExpressionTree constructor calling super.
      *
      * @param value The value for this ConcreteExpression instance.
      */
     ConcreteExpression(final Object value) {
-        if (value instanceof Collection) {
-            for (Object obj : (Collection) value) {
-                if (!(obj instanceof Expression)) {
-                    throw new IllegalArgumentException("An Expression tree cannot contain non-Expression objects. " + obj.getClass());
-                }
-            }
-        }
         this.value = Objects.requireNonNull(value, "An Expression cannot have a null value.");
     }
 
@@ -42,9 +31,6 @@ class ConcreteExpression implements Expression {
      * @return Either an immutable copy of the Expression tree this instance contains, or the scalar value it contains.
      */
     public Object value() {
-        if (this.value instanceof Collection) {
-            return Collections.unmodifiableCollection((Collection) this.value);
-        }
         return this.value;
     }
 
@@ -55,9 +41,6 @@ class ConcreteExpression implements Expression {
      */
     @Override
     public Collection<Expression> subExpressions() {
-        if (this.value instanceof Collection) {
-            return Collections.unmodifiableCollection((Collection) this.value);
-        }
         return Collections.EMPTY_LIST;
     }
 

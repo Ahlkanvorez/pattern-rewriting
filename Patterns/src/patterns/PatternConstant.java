@@ -143,9 +143,9 @@ final class PatternConstant implements Pattern {
             for (final Pattern pat : (Collection<Pattern>) this.constant) {
                 accum.add(pat.expressionFrom(bindings));
             }
-            return new ConcreteExpression(accum);
+            return Expression.of(accum);
         }
-        return new ConcreteExpression(this.constant);
+        return Expression.of(this.constant);
     }
 
     /** Two PatternConstant instances are equal if and only if they have equal constants under .equals().
