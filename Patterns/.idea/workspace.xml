@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2acd824-49e6-4b34-b088-2be2c30c5d5e" name="Default" comment="Finished implementing ConcreteExpressionTree, which should streamline the">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java" />
+    <list default="true" id="a2acd824-49e6-4b34-b088-2be2c30c5d5e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTreeTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" afterPath="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/Expression.java" afterPath="$PROJECT_DIR$/src/patterns/Expression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" afterPath="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/PatternConstant.java" afterPath="$PROJECT_DIR$/src/patterns/PatternConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java" afterPath="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java" />
     </list>
     <ignored path="Patterns.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,65 +35,57 @@
     <favorites_list name="Patterns" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PatternConstant.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="67" column="25" lean-forward="true" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConcreteExpression.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1557#1558#0" expanded="true" />
-                <element signature="e#1590#1591#0" expanded="true" />
-                <element signature="e#1996#1997#0" expanded="true" />
-                <element signature="e#2041#2042#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConcreteExpressionTree.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2221#2222#0" expanded="true" />
-                <element signature="e#2306#2307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Expression.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/patterns/Expression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.21513945">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="ConcreteExpressionTree.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#2221#2222#0" expanded="true" />
+                    <element signature="e#2265#2266#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="ConcreteExpressionTreeTest.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/patterns/ConcreteExpressionTreeTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ConcreteExpressionTest.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1350">
+                  <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -137,12 +128,13 @@
         <option value="$PROJECT_DIR$/src/patterns/Pattern.java" />
         <option value="$PROJECT_DIR$/tests/patterns/PatternConstantTest.java" />
         <option value="$PROJECT_DIR$/tests/patterns/PatternVariableTest.java" />
-        <option value="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java" />
         <option value="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTree.java" />
         <option value="$PROJECT_DIR$/src/patterns/Expression.java" />
         <option value="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" />
-        <option value="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
         <option value="$PROJECT_DIR$/src/patterns/PatternConstant.java" />
+        <option value="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
+        <option value="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTreeTest.java" />
+        <option value="$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java" />
       </list>
     </option>
   </component>
@@ -156,8 +148,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="842" />
-    <option name="width" value="838" />
+    <option name="x" value="1065" />
+    <option name="width" value="615" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -265,8 +257,8 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PatternVariableTest">
-    <configuration default="false" name="PatternVariableTest.testMatches" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in Patterns">
+    <configuration default="false" name="ConcreteExpressionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="patterns.*" />
@@ -277,9 +269,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.PatternVariableTest" />
-      <option name="METHOD_NAME" value="testMatches" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="patterns.ConcreteExpressionTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -292,7 +284,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="PatternVariableTest.testMatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ConcreteExpressionTest.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="patterns.*" />
@@ -303,59 +295,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.PatternVariableTest" />
-      <option name="METHOD_NAME" value="testMatch" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PatternVariableTest.testExpressionFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="patterns.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Patterns" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.PatternVariableTest" />
-      <option name="METHOD_NAME" value="testExpressionFrom" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PatternVariableTest.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="patterns.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Patterns" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.PatternVariableTest" />
+      <option name="MAIN_CLASS_NAME" value="patterns.ConcreteExpressionTest" />
       <option name="METHOD_NAME" value="testEquals" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -370,7 +310,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="PatternVariableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ConcreteExpressionTest.testHashCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="patterns.*" />
@@ -381,9 +321,56 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="patterns" />
-      <option name="MAIN_CLASS_NAME" value="patterns.PatternVariableTest" />
+      <option name="MAIN_CLASS_NAME" value="patterns.ConcreteExpressionTest" />
+      <option name="METHOD_NAME" value="testHashCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ConcreteExpressionTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="patterns.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Patterns" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="patterns" />
+      <option name="MAIN_CLASS_NAME" value="patterns.ConcreteExpressionTest" />
+      <option name="METHOD_NAME" value="testToString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in Patterns" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Patterns" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -845,19 +832,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testMatches" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testMatch" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testExpressionFrom" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testEquals" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PatternVariableTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testEquals" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testHashCode" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testToString" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All in Patterns" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PatternVariableTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testEquals" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testExpressionFrom" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testMatch" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PatternVariableTest.testMatches" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in Patterns" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testToString" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testHashCode" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ConcreteExpressionTest.testEquals" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -922,7 +909,7 @@
       <workItem from="1484586263032" duration="10425000" />
       <workItem from="1484763279004" duration="305000" />
       <workItem from="1484955032734" duration="14000" />
-      <workItem from="1484955095941" duration="6523000" />
+      <workItem from="1484955095941" duration="12031000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented parsing Expression trees from a string which is formatted using prefix notation, without parentheses.&#10;&#10;TODO: Implement more default operators for lookup, and implement the ability to register custom operators in the lookup table. Also, implement translating a String from prefix to infix, to allow parsing of infix expressions.&#10;&#10;&#10;Add comments ASAP.">
       <created>1477937118086</created>
@@ -1029,43 +1016,50 @@
       <option name="project" value="LOCAL" />
       <updated>1485474852866</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Finished implementing ConcreteExpressionTree, which simplifies the code in all the ConcreteExpression methods, and made both their constructors private, requiring a more abstract use of the Expression library which should simplify future code.">
+      <created>1485990023950</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1485990023950</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PatternVariableTest - 2017.01.26 at 17h 01m 52s.xml">
-      <configuration name="PatternVariableTest" configurationId="JUnit" />
+    <history-entry file="All_in_Patterns - 2017.02.01 at 18h 07m 10s.xml">
+      <configuration name="All in Patterns" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest - 2017.02.01 at 16h 52m 15s.xml">
-      <configuration name="PatternVariableTest" configurationId="JUnit" />
+    <history-entry file="All_in_Patterns - 2017.02.01 at 18h 39m 14s.xml">
+      <configuration name="All in Patterns" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest - 2017.02.01 at 16h 59m 29s.xml">
-      <configuration name="PatternVariableTest" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest - 2017.02.01 at 18h 05m 11s.xml">
+      <configuration name="ConcreteExpressionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testEquals - 2017.01.20 at 21h 24m 51s.xml">
-      <configuration name="PatternVariableTest.testEquals" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest - 2017.02.01 at 18h 06m 57s.xml">
+      <configuration name="ConcreteExpressionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testExpressionFrom - 2017.01.20 at 21h 23m 25s.xml">
-      <configuration name="PatternVariableTest.testExpressionFrom" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest - 2017.02.01 at 18h 07m 00s.xml">
+      <configuration name="ConcreteExpressionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testExpressionFrom - 2017.01.20 at 21h 23m 30s.xml">
-      <configuration name="PatternVariableTest.testExpressionFrom" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest_testEquals - 2017.02.01 at 18h 05m 06s.xml">
+      <configuration name="ConcreteExpressionTest.testEquals" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testMatch - 2017.01.20 at 20h 36m 10s.xml">
-      <configuration name="PatternVariableTest.testMatch" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest_testHashCode - 2017.02.01 at 18h 05m 08s.xml">
+      <configuration name="ConcreteExpressionTest.testHashCode" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testMatches - 2017.01.20 at 20h 28m 01s.xml">
-      <configuration name="PatternVariableTest.testMatches" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest_testSubExpressions - 2017.02.01 at 17h 55m 52s.xml">
+      <configuration name="ConcreteExpressionTest.testSubExpressions" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testName - 2017.01.20 at 20h 27m 56s.xml">
-      <configuration name="PatternVariableTest.testName" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest_testToString - 2017.02.01 at 18h 06m 29s.xml">
+      <configuration name="ConcreteExpressionTest.testToString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PatternVariableTest_testStaticFactoryVariableTest - 2017.01.20 at 20h 27m 54s.xml">
-      <configuration name="PatternVariableTest.testStaticFactoryVariableTest" configurationId="JUnit" />
+    <history-entry file="ConcreteExpressionTest_testToString - 2017.02.01 at 18h 06m 49s.xml">
+      <configuration name="ConcreteExpressionTest.testToString" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62997000" />
+    <option name="totallyTimeSpent" value="68505000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1077,7 +1071,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="842" y="0" width="838" height="1050" extended-state="0" />
+    <frame x="1065" y="0" width="615" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1089,13 +1083,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2877551" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20322181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20069808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1169,7 +1163,8 @@
     <MESSAGE value="Corrected a bug in the .matches method for PatternConstant, where it could never match if the Pattern were a tree. Also started writing tests for the PatternConstant class." />
     <MESSAGE value="Finished testing PatternConstant, and started testing PatternVariable: both test classes need comments." />
     <MESSAGE value="Finished testing PatterVariable, need to comment all tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished testing PatterVariable, need to comment all tests." />
+    <MESSAGE value="Finished implementing ConcreteExpressionTree, which simplifies the code in all the ConcreteExpression methods, and made both their constructors private, requiring a more abstract use of the Expression library which should simplify future code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing ConcreteExpressionTree, which simplifies the code in all the ConcreteExpression methods, and made both their constructors private, requiring a more abstract use of the Expression library which should simplify future code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1182,14 +1177,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/patterns/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -1493,17 +1480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/patterns/Pattern.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1539,9 +1515,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="-345">
           <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1563,20 +1547,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+        <state relative-caret-position="60">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2221#2222#0" expanded="true" />
-            <element signature="e#2306#2307#0" expanded="true" />
+            <element signature="e#2265#2266#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/patterns/PatternConstant.java">
+    <entry file="file://$PROJECT_DIR$/tests/patterns/ConcreteExpressionTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="67" column="25" lean-forward="true" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        <state relative-caret-position="90">
+          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/patterns/ConcreteExpressionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
         </state>
       </provider>

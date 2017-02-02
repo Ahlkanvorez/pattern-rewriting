@@ -48,6 +48,6 @@ class ConcreteExpressionTree extends ConcreteExpression {
      */
     @Override
     public Object value() {
-        return Collections.unmodifiableCollection((Collection) super.value());
+        return this.subExpressions();
     }
 }

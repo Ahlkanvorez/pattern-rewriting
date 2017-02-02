@@ -27,6 +27,7 @@ final class PatternConstant implements Pattern {
      * static-factory method in the Pattern interface; however, all other methods are usable once an instance is had.
      *
      * TODO: Consider requiring constant be Cloneable, to protect from passing and later changing a mutable value.
+     * TODO: Consider implementing a PatternConstantTree class similar to the ConcreteExpressionTree class.
      *
      * @param constant The constant value which this PatternConstant represents and solely matches.
      */
