@@ -19,6 +19,9 @@ class PatternVariableTest {
     private Expression stringExpression;
     private Expression treeExpression;
 
+    /**
+     * TODO: Comment
+     */
     @BeforeEach
     void setUp() {
         variableName = "not-x";
@@ -27,6 +30,9 @@ class PatternVariableTest {
         treeExpression = Expression.of(Arrays.asList(stringExpression, stringExpression));
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testStaticFactoryVariableTest() {
         assert variablePattern instanceof PatternVariable;
@@ -37,17 +43,26 @@ class PatternVariableTest {
         }
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testName() {
         assert ((PatternVariable) variablePattern).name().equals(variableName);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testMatches() {
         assert variablePattern.matches(stringExpression);
         assert variablePattern.matches(treeExpression);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testMatch() {
         final Map<Pattern, Expression> bindings = new HashMap<>();
@@ -57,6 +72,9 @@ class PatternVariableTest {
         assert variablePattern.match(treeExpression).equals(bindings);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testExpressionFrom() {
         assert variablePattern.expressionFrom(variablePattern.match(stringExpression))
@@ -65,18 +83,27 @@ class PatternVariableTest {
                 .equals(treeExpression);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testEquals() {
         assert variablePattern.equals(Pattern.variableOf(variableName));
         assert !variablePattern.equals(Pattern.variableOf("not" + variablePattern));
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testHashCode() {
         assert variablePattern.hashCode() == Pattern.variableOf(variableName).hashCode();
         assert variablePattern.hashCode() != Pattern.variableOf("not" + variablePattern).hashCode();
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testToString() {
         assert variablePattern.toString().equals(variableName);

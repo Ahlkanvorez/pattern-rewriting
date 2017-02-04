@@ -1,5 +1,6 @@
 package patterns;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -61,7 +62,7 @@ public interface Pattern {
      * @return A Pattern matching Expressions which contain an Object equal to the given one.
      */
     static Pattern of(Object data) {
-        return new PatternConstant(data);
+        return of(data, false);
     }
 
     /** Creates a Pattern based on the given data, being either a Variable with the given name (a String), or
@@ -71,10 +72,16 @@ public interface Pattern {
      * @return a Pattern representing the structure and contents of the given data.
      */
     static Pattern of(Object data, boolean variable) {
-        if (variable && !(data instanceof String)) {
-            throw new IllegalArgumentException("A Variable Pattern must have a String for its data.");
+        if (variable) {
+            if (!(data instanceof String)) {
+                throw new IllegalArgumentException("A Variable Pattern must have a String for its data.");
+            }
+            /* Instead of instantiating here, delegate to the variableOf factory, in case further requirements for
+             * variable names are implemented, etc.
+             */
+            return variableOf((String) data);
         }
-        return variable ? new PatternVariable((String) data) : new PatternConstant(data);
+        return data instanceof Collection ? new ConcretePatternTree(data) : new ConcretePattern(data);
     }
 
     /** Instantiates a Pattern representing a variable with the given String as a name.

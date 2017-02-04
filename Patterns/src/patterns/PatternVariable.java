@@ -110,8 +110,8 @@ final class PatternVariable implements Pattern {
 
     /** A PatternVariable has one String representation, its name.
      *
-     * TODO: Consider additional syntax for indicating this is a PatternVariable and not a String PatternConstant,
-     * TODO: e.g. "(variable " + this.name() + ")" Of course, any designation could be mimicked in a PatternConstant.
+     * TODO: Consider additional syntax for indicating this is a PatternVariable and not a String ConcretePattern,
+     * TODO: e.g. "(variable " + this.name() + ")" Of course, any designation could be mimicked in a ConcretePattern.
      *
      * @return The name of this PatternVariable as a String, which is its only String representation.
      */
