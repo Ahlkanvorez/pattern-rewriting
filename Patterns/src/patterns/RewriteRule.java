@@ -92,6 +92,7 @@ public final class RewriteRule {
      */
     public Expression rewrite(Expression e) {
         if (!this.canRewrite(e)) {
+            System.err.println("<" + this + "> Cannot rewrite Expression: " + e);
             return null;
         }
         return rangePattern.expressionFrom(domainPattern.match(e));

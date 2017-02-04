@@ -1,6 +1,5 @@
 package patterns;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +8,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * TODO: Add tests for a tree pattern with a variable subtree and a constant subtree.
  *
- * Created by robertmitchell on 1/16/17.
+ * @author Robert Mitchell <robert.mitchell36@gmail.com>
  */
-class PatternConstantTest {
+class ConcretePatternTest {
     private String stringInput;
     private Collection<Pattern> collectionInput;
     private Pattern stringPattern;
@@ -29,6 +26,9 @@ class PatternConstantTest {
     private Expression equalCollectionExpression;
     private Expression differentCollectionExpression;
 
+    /**
+     * TODO: Comment
+     */
     @BeforeEach
     void setUp() {
         stringInput = "Hello, world!";
@@ -49,23 +49,35 @@ class PatternConstantTest {
         differentCollectionExpression = Expression.of(differentCollectionExpressionInput);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testStaticFactoryStringPatternTest() {
-        assert stringPattern instanceof PatternConstant;
+        assert stringPattern instanceof ConcretePattern;
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testStaticFactoryCollectionTest() {
-        assert treePattern instanceof PatternConstant;
-        assert ((PatternConstant) treePattern).constant() instanceof Collection;
+        assert treePattern instanceof ConcretePattern;
+        assert ((ConcretePattern) treePattern).constant() instanceof Collection;
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testConstant() {
-        assert ((PatternConstant) stringPattern).constant() instanceof String;
-        assert ((PatternConstant) treePattern).constant() instanceof Collection;
+        assert ((ConcretePattern) stringPattern).constant() instanceof String;
+        assert ((ConcretePattern) treePattern).constant() instanceof Collection;
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testMatches() {
         assert stringPattern.matches(equalStringExpression);
@@ -74,6 +86,9 @@ class PatternConstantTest {
         assert !treePattern.matches(differentCollectionExpression);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testMatch() {
         assert stringPattern.match(equalStringExpression).equals(Collections.emptyMap());
@@ -90,6 +105,9 @@ class PatternConstantTest {
         }
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testExpressionFrom() {
         assert stringPattern.expressionFrom(Collections.emptyMap()).equals(equalStringExpression);
@@ -98,6 +116,9 @@ class PatternConstantTest {
         assert !treePattern.expressionFrom(Collections.emptyMap()).equals(differentCollectionExpression);
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testEquals() {
         assert stringPattern.equals(Pattern.of(stringInput));
@@ -106,6 +127,9 @@ class PatternConstantTest {
         assert !treePattern.equals(Pattern.of(Arrays.asList(Pattern.of(stringInput + "turtles"))));
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testHashCode() {
         assert stringPattern.hashCode() == Pattern.of(stringInput).hashCode();
@@ -114,6 +138,9 @@ class PatternConstantTest {
         assert treePattern.hashCode() != Pattern.of(Arrays.asList(Pattern.of(stringInput + "turtles"))).hashCode();
     }
 
+    /**
+     * TODO: Comment
+     */
     @Test
     void testToString() {
         assert stringPattern.toString().equals(stringInput);

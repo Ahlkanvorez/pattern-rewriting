@@ -44,7 +44,10 @@ public class ExpressionSearch {
      */
     public static Expression search(final Expression start, final List<RewriteRule> rules, final Function<Expression, Boolean> isTarget) {
         return BreadthFirstSearch.search(start,
-                expr -> rules.stream().map(r -> r.rewrite(expr)).collect(Collectors.toList()),
+                expr -> rules.stream().map(r -> {
+                    System.out.println(r.rewrite(expr));
+                    return r.rewrite(expr);
+                }).collect(Collectors.toList()),
                 isTarget);
     }
 }
