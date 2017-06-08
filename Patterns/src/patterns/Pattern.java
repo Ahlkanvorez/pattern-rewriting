@@ -65,7 +65,7 @@ public interface Pattern {
         return of(data, false);
     }
 
-    /** Creates a Pattern based on the given data, being either a Variable with the given name (a String), or
+    /** Creates a Pattern based on the given data, being either a Variable with the given name (a String), or an object.
      *
      * @param data The data to create a Pattern based on.
      * @param variable true if the desired Pattern is a variable, false otherwise.
