@@ -4,7 +4,7 @@ A pattern matching and rewrite-rule system in lisp (being translated into Java) 
 </p>
 
 <p>
-For more information, <a target="_blank" href="https://www.hrodebert.me/article-list/?query=patterns">check out my blog posts on the subject</a>.
+For more information, <a target="_blank" href="https://www.hrodebert.com/article-list/?query=patterns">check out my blog posts on the subject</a>.
 </p>
 
 <p>
