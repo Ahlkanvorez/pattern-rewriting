@@ -32,7 +32,7 @@
 ;;; Example-usage (bfs-test)
 ;;; This extended example uses bfs and the expression-evaluation library to find the simplest form
 ;;; representing any integer using the Successor function (+ 1 x) and the Negation function (- x),
-;;; relative to the number 0. The output is the proper, although not only, way to represent an
+;;; relative to the number 0. The output is the proper, although not unique, way to represent an
 ;;; integer using such functions, starting from whatever reference integer is desired, with a list
 ;;; of the shortest number of operations to arrive at that integer.
 ;;; NOTE: This test requires exp-eval.rkt

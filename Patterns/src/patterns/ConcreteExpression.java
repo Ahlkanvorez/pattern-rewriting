@@ -57,7 +57,7 @@ class ConcreteExpression implements Expression {
         if (other == null || !(other instanceof ConcreteExpression)) {
             return false;
         }
-        return this.value.equals(((ConcreteExpression) other).value);
+        return this.value().equals(((ConcreteExpression) other).value());
     }
 
     /** The value of a ConcreteExpression completely defines it, so its hashcode is based on the hashcode of its value.
