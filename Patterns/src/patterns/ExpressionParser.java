@@ -9,6 +9,7 @@ import static java.util.stream.Collectors.toList;
 
 public class ExpressionParser {
 
+    // TODO: Write thorough tests for this method.
     static List<String> getTopLevelComponents (final String s) {
         final List<String> values = new ArrayList<>();
         int start = 0;

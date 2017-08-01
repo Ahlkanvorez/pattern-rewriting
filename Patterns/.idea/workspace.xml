@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2acd824-49e6-4b34-b088-2be2c30c5d5e" name="Default" comment="Finished testing and commenting the tests of ConcreteExpression and ConcreteExpressionTree">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.0.0-M5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/opentest4j-1.0.0-M2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/patterns/ExpressionParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/patterns/ExpressionParserTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Patterns.iml" afterPath="$PROJECT_DIR$/Patterns.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" afterPath="$PROJECT_DIR$/src/patterns/ConcreteExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" afterPath="$PROJECT_DIR$/src/patterns/ConcreteExpressionTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../racket/graphs.rkt" afterPath="$PROJECT_DIR$/../racket/graphs.rkt" />
+    <list default="true" id="a2acd824-49e6-4b34-b088-2be2c30c5d5e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/patterns/ExpressionParser.java" afterPath="$PROJECT_DIR$/src/patterns/ExpressionParser.java" />
     </list>
     <ignored path="Patterns.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +37,8 @@
           <file leaf-file-name="ExpressionParser.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/patterns/ExpressionParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="329">
-                  <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                <state relative-caret-position="150">
+                  <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -136,8 +129,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Robert Mitchell &lt;ahlkanvorez@users.noreply.github.com&gt;" />
         <option value="Robert Mitchell &lt;robert.mitchell36@gmail.com&gt;" />
+        <option value="Robert Mitchell &lt;ahlkanvorez@users.noreply.github.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -952,7 +945,7 @@
       <workItem from="1496878795128" duration="2096000" />
       <workItem from="1497907276124" duration="619000" />
       <workItem from="1498094100821" duration="123000" />
-      <workItem from="1501598242536" duration="6329000" />
+      <workItem from="1501598242536" duration="6436000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented parsing Expression trees from a string which is formatted using prefix notation, without parentheses.&#10;&#10;TODO: Implement more default operators for lookup, and implement the ability to register custom operators in the lookup table. Also, implement translating a String from prefix to infix, to allow parsing of infix expressions.&#10;&#10;&#10;Add comments ASAP.">
       <created>1477937118086</created>
@@ -1087,7 +1080,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501622402581</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added basic tests for an ExpressionParser class that converts Strings to&#10;Expressions, with an implementation passing all tests.">
+      <created>1501622437882</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1501622437882</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1123,7 +1123,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86783000" />
+    <option name="totallyTimeSpent" value="86890000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1237,7 +1237,8 @@
     <MESSAGE value="Finished implementing ConcreteExpressionTree, which simplifies the code in all the ConcreteExpression methods, and made both their constructors private, requiring a more abstract use of the Expression library which should simplify future code." />
     <MESSAGE value="Finished testing and commenting the tests of ConcreteExpression and ConcreteExpressionTree" />
     <MESSAGE value="Added a .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a .gitignore" />
+    <MESSAGE value="Added basic tests for an ExpressionParser class that converts Strings to&#10;Expressions, with an implementation passing all tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic tests for an ExpressionParser class that converts Strings to&#10;Expressions, with an implementation passing all tests." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1626,20 +1627,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/patterns/ExpressionParser.java">
+    <entry file="file://$PROJECT_DIR$/tests/patterns/ExpressionParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="241">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/patterns/ExpressionParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/patterns/ExpressionParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
