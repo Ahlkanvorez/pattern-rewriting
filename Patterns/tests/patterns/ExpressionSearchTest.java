@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static patterns.ExpressionSearch.search;
 import static patterns.RewriteRule.*;
 
@@ -136,7 +137,7 @@ class ExpressionSearchTest {
      */
     @Test
     void testPeanoArithmetic() {
-        assert search(zero, peanoRules, peanoIsTarget).toString()
-                .equals("[N, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, [S, 0]]]]]]]]]]]]]");
+        assertEquals("(N (S (S (S (S (S (S (S (S (S (S (S (S 0)))))))))))))",
+                search(zero, peanoRules, peanoIsTarget).toString());
     }
 }
