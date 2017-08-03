@@ -42,7 +42,7 @@ class ExpressionSearchTest {
     }
 
     private int evalEquationFromList(final List<Object> values) {
-        Stack<String> evalStack = Stack.newInstance();
+        final Stack<String> evalStack = Stack.newInstance();
         switch (values.size()) {
             case 1: // For the sake of this test, must be a number.
                 evalStack.push(values.get(0).toString());
@@ -64,13 +64,15 @@ class ExpressionSearchTest {
                 break;
         }
         while (evalStack.size() > 1) {
-            int A = Integer.parseInt(evalStack.pop());
-            int B = Integer.parseInt(evalStack.pop());
-            String op = evalStack.pop();
-            if (op.equals("+")) {
-                evalStack.push((A + B) + "");
-            } else if (op.equals("*")) {
-                evalStack.push((A * B) + "");
+            final int A = Integer.parseInt(evalStack.pop());
+            final int B = Integer.parseInt(evalStack.pop());
+            switch (evalStack.pop()) {
+                case "+":
+                    evalStack.push((A + B) + "");
+                    break;
+                case "*":
+                    evalStack.push((A * B) + "");
+                    break;
             }
         }
         return Integer.parseInt(evalStack.pop());
