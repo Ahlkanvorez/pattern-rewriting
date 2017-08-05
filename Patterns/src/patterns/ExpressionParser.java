@@ -47,6 +47,7 @@ public class ExpressionParser {
      * @return an Expression instance represented by the provided String.
      */
     public static Expression valueOf (final String s) {
+        // If s starts with (, then it is a compound expression.
         if (s.startsWith("(")) {
             final List<String> values = getTopLevelComponents(s.trim() // Bounding whitespace is not counted.
                     .replaceFirst("^\\(", "") // Remove initial ( if present
