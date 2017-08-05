@@ -18,8 +18,8 @@ public class PatternParser {
                     .replaceFirst("^\\(", "") // Remove initial ( if present
                     .replaceFirst("\\)$", "")); // Remove final ) if present
 
-            // Return an Expression of all the sub expressions.
-            return Pattern.of(values.stream().map(ExpressionParser::valueOf).collect(toList()));
+            // Return an Expression of all the sub patterns.
+            return Pattern.of(values.stream().map(PatternParser::valueOf).collect(toList()));
         }
         // if s does not start with (, then it is either a variable or a plain Pattern.
         return isVariable(s) ? Pattern.variableOf(s) : Pattern.of(s);
