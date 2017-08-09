@@ -182,6 +182,17 @@
            (cadr (substitute binds pattern))))
         (else a)))
 
+(define (transform-recursive pattern a)
+  (cond ((or (null? pattern) (null? a))
+          a)
+        ((list? a)
+          (transform-total
+            pattern
+            (map (lambda (x) (transform-recursive pattern x))
+                 a)))
+        (else
+          (transform-total pattern a))))
+
 ;;;; (symbol) -> boolean
 ;; Given a symbol, this function returns true if the symbol is formatted
 ;; properly to be used as a variable in binding for pattern rewriting, and false

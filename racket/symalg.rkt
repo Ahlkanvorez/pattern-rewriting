@@ -124,8 +124,8 @@
         ; If there are no variables in the expression, evaluate it.
         (if (empty? (expr-vars expr))
             (if (empty? functions)
-                (exp-easy-eval '() expr)
-                (exp-eval functions '() expr))
+                (exp-easy-eval `((pi ,pi)) expr)
+                (exp-eval functions `((pi ,pi)) expr))
             ; Otherwise, recursively simplify each sub-tree, and recombine the
             ; results.
             (let ((left (eval-simplify (lhs expr)))
@@ -164,7 +164,7 @@
         #t
         (list 'got result 'expected target))))
 (define (easy-simplify exp)
-  (simplify '()
+  (simplify `()
             (append rewrite-rules-functions
                     rewrite-rules-basic-algebra
                     rewrite-rules-differential-calculus)
@@ -191,7 +191,8 @@
 (define (easy-solve exp var)
   (solve (append rewrite-rules-functions
                  rewrite-rules-basic-algebra
-                 rewrite-rules-solve-equation)
+                 rewrite-rules-solve-equation
+                 rewrite-rules-differential-calculus)
          exp var))
 
 ;;;; (exp) -> (a? b? c? ... z?)
@@ -388,6 +389,9 @@
     ((+ x? 0) x?)
     ((+ 0 x?) x?)
 
+    ((- 0 x?) (- x?))
+    ((- x? 0) x?)
+
     ; Inverses for addition
     ((+ x? (- x?)) 0)
     ((+ (- x?) x?) 0)
@@ -435,6 +439,9 @@
     ; Exponent Rule
     ((deriv (expt x? n?) u?)
      (* n? (expt x? (- n? 1))))
+    
+    ((deriv (square x?) u?)
+     (* 2 x?))
 
     ; Chain rule
     ((deriv (f? (g? x?)) u?)
