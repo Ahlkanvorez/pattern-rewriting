@@ -7,6 +7,11 @@ A pattern matching and rewrite-rule system in lisp (being translated into Java) 
 For more information, <a target="_blank" href="https://www.hrodebert.com/articles/Programming-with-Patterns">check out my blog posts on the subject</a>.
 </p>
 
-<p>
-This is intended as an exploratory exercise, not as production level code. Use at your own risk.
-</p>
+
+#### How can I see it work?
+
+I've included a short demo program for the lisp/racket implementation, in a file called demo.rkt in the racket/ directory.
+
+Install racket, so that you have the racket terminal command, from the following link: https://download.racket-lang.org/
+
+Next, follow the directions at the top of the demo.rkt file. It currently contains 5 short examples of what the computer algebra system can do.
