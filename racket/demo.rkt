@@ -51,7 +51,7 @@
         (display (list `solving equation `for variable))
         (newline)
         (let* ((solution (easy-solve (infix-to-prefix equation) variable)))
-            (print-work (prefix-to-infix solution))
+            (print-work (map prefix-to-infix solution))
             (display (prefix-to-infix (easy-simplify (last solution))))
             (newline))))
 
