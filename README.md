@@ -1,21 +1,36 @@
 # Pattern Rewriting
-<p>
-A pattern matching and rewrite-rule system in lisp (being translated into Java) with application to equation solving, symbolic computation, automated theorem proving, translation between programming languages, and grammatical analysis and transformation of sentences. Many of the examples in the code base already are symbolic computation problems, and I intend to add an extended application in parsing and transforming Latin sentences.
-</p>
+A pattern matching and rewrite-rule system in scheme with application to equation solving, symbolic computation, automated theorem proving, translation between programming languages, and grammatical analysis and transformation of sentences.
 
-<p>
-For more information, <a target="_blank" href="https://www.hrodebert.com/articles/Programming-with-Patterns">check out my blog posts on the subject</a>.
-</p>
+The repository also includes an incomplete Java rewrite of the system, which I currently have no plans to complete.
 
+## Demo
 
-### How can I see it work?
+See `racket/demo.rkt` for some usage examples; you'll need to install [Racket](https://racket-lang.org) to run the files.
 
-I've included a short demo program for the lisp/racket implementation, in a file called demo.rkt in the racket/ directory.
+## About
 
-Install racket, so that you have the racket terminal command, from the following link: https://download.racket-lang.org/
+I wrote this in college as a fun hobby project, but haven't improved it since. It traverses the expression graph naively, so equations where the solution is a long distance from the original problem will have significantly longer runtimes than those of a shorter path length. It can offer step by step solutions to basic algebraic problems, and when given the right rewrite rules, can provide proofs of basic results in set theory. It can also be used for rewriting lisp code based on structural patterns.
 
-Next, follow the directions at the top of the demo.rkt file. It currently contains 5 short examples of what the computer algebra system can do.
+## License
 
-### Can it solve anything I want?
+MIT License
 
-No. It can do a lot, but it is very limited, as use will show. It is very quick for simple manipulations, but more complicated transformations in the context of trying to solve equations or prove theorems can become extremely cumbersome, as the number of possible expressions to consider becomes innumerable. That being said, if simple transformations are all that are desired, or if searching expression-graphs for expressions matching certain paterns is not desired, the system can be very handy and a lot of fun for experimentation.
+Copyright (c) 2016 Robert Mitchell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
